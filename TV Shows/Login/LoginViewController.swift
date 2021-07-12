@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+
 
 class LoginViewController : UIViewController {
     
@@ -23,8 +25,12 @@ class LoginViewController : UIViewController {
         touchCount = 0
         button.layer.cornerRadius = 25.0
         indicatorButton.layer.cornerRadius = 25.0
-        activityIndicator.stopAnimating() //napravi asinkrono 3 sekunde do stopa! i PR!
+        activityIndicator.stopAnimating() //napravi asinkrono 3 sekunde
         
+        SVProgressHUD.show()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            SVProgressHUD.dismiss()
+        }
     }
     
     @IBAction func buttonHandler(_ sender: Any) {
