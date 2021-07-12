@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SVProgressHUD
 
 
 class LoginViewController : UIViewController {
@@ -22,15 +21,15 @@ class LoginViewController : UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         touchCount = 0
         button.layer.cornerRadius = 25.0
         indicatorButton.layer.cornerRadius = 25.0
-        activityIndicator.stopAnimating() //napravi asinkrono 3 sekunde
         
-        SVProgressHUD.show()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            SVProgressHUD.dismiss()
+            self.activityIndicator.stopAnimating()
         }
+        
     }
     
     @IBAction func buttonHandler(_ sender: Any) {
@@ -39,11 +38,11 @@ class LoginViewController : UIViewController {
         self.label.text = String(touchCount)
         
     }
-    
  
     @IBAction func indicatorController(_ sender: Any) {
-        if(activityIndicator.isAnimating) {
-            activityIndicator.stopAnimating()
+        
+        if(self.activityIndicator.isAnimating) {
+            self.activityIndicator.stopAnimating()
             indicatorButton.setTitle("Start Activity Indicator", for: .normal)
         }
         else {

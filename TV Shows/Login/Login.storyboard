@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -14,20 +14,22 @@
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="LoginViewController" customModule="TV_Shows" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2U-BM-qeZ">
-                                <rect key="frame" x="186" y="559" width="42" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2U-BM-qeZ">
+                                <rect key="frame" x="187" y="600" width="16" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAW-gj-4UL">
-                                <rect key="frame" x="20" y="474" width="374" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAW-gj-4UL">
+                                <rect key="frame" x="105" y="523" width="180" height="60"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="OkB-Yo-xAq"/>
+                                    <constraint firstAttribute="width" constant="180" id="sGs-pT-WxT"/>
+                                </constraints>
                                 <state key="normal" title=" Touch me!" image="buttonIcon">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
@@ -35,14 +37,16 @@
                                     <action selector="buttonHandler:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="JVO-rr-YMP"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="mYK-cn-pjk">
-                                <rect key="frame" x="197" y="302" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="mYK-cn-pjk">
+                                <rect key="frame" x="185" y="412" width="20" height="20"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O88-9p-vy4">
-                                <rect key="frame" x="113" y="184" width="189" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O88-9p-vy4">
+                                <rect key="frame" x="105" y="144" width="180" height="60"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.80784313730000001" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="CNh-O8-XX6"/>
+                                    <constraint firstAttribute="width" constant="180" id="SrT-Ge-4lk"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                 <state key="normal" title="Start Activity Indicator!">
                                     <color key="titleColor" systemColor="labelColor"/>
@@ -54,6 +58,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <constraints>
+                            <constraint firstItem="v2U-BM-qeZ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="EXk-sS-Kpw"/>
+                            <constraint firstItem="O88-9p-vy4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="QB9-x8-tcI"/>
+                            <constraint firstItem="mYK-cn-pjk" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Yye-u6-3ft"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="v2U-BM-qeZ" secondAttribute="bottom" constant="180" id="a6b-ri-EBV"/>
+                            <constraint firstItem="v2U-BM-qeZ" firstAttribute="top" secondItem="LAW-gj-4UL" secondAttribute="bottom" constant="17" id="rZJ-ta-6T9"/>
+                            <constraint firstItem="LAW-gj-4UL" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="sPS-vZ-nZo"/>
+                            <constraint firstItem="mYK-cn-pjk" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="tpG-4Y-ySU"/>
+                            <constraint firstItem="O88-9p-vy4" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="wkM-EO-3fi"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="mYK-cn-pjk" id="ECY-JV-3jz"/>
