@@ -8,14 +8,14 @@
 import UIKit
 
 
-class LoginViewController : UIViewController {
+final class LoginViewController : UIViewController {
     
     
-    var touchCount : Int = 0
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var indicatorButton: UIButton!
+    @IBOutlet private weak var counterLabel: UILabel!
+    @IBOutlet private weak var counterButton: UIButton!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var indicatorButton: UIButton!
+    var touchCount = 0
     
     
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ class LoginViewController : UIViewController {
         super.viewDidLoad()
         
         touchCount = 0
-        button.layer.cornerRadius = 25.0
+        counterButton.layer.cornerRadius = 25.0
         indicatorButton.layer.cornerRadius = 25.0
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -35,14 +35,14 @@ class LoginViewController : UIViewController {
     @IBAction func buttonHandler(_ sender: Any) {
         print("Button touched!")
         touchCount += 1
-        self.label.text = String(touchCount)
+        counterLabel.text = String(touchCount)
         
     }
  
     @IBAction func indicatorController(_ sender: Any) {
         
-        if(self.activityIndicator.isAnimating) {
-            self.activityIndicator.stopAnimating()
+        if(activityIndicator.isAnimating) {
+            activityIndicator.stopAnimating()
             indicatorButton.setTitle("Start Activity Indicator", for: .normal)
         }
         else {
