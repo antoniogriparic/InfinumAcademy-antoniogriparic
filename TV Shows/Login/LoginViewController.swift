@@ -24,41 +24,13 @@ final class LoginViewController : UIViewController {
     private var rememberMeButtonState = false
     private var visibleButtonState = false
     
-    // MARK: - Functions
+    // MARK: - Lifecycle methods -
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         setupUI()
         
-    }
-    
-    func setupUI() -> Void {
-        loginButton.layer.cornerRadius = 21.5
-        loginButton.alpha = 0.5
-        loginButton.isEnabled = false
-        registerButton.isEnabled = false
-        visibleButton.isHidden = true
-        passwordTextField.isSecureTextEntry = true
-    }
-    
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
-    
-    func LoginAndRegisterHandler() -> Void {
-        guard(usernameTextField.hasText && passwordTextField.hasText && isValidEmail(usernameTextField.text ?? "")) else {
-            loginButton.isEnabled = false
-            loginButton.alpha = 0.5
-            registerButton.isEnabled = false
-            return
-        }
-        loginButton.isEnabled = true
-        loginButton.alpha = 1.0
-        registerButton.isEnabled = true
     }
     
     // MARK: - Actions
@@ -68,16 +40,18 @@ final class LoginViewController : UIViewController {
     }
     
     @IBAction func passwordTextFieldHandler(_ sender: Any) {
-        if(passwordTextField.hasText) {
+        if passwordTextField.hasText {
             visibleButton.isHidden = false
-        }else {
+        }
+        else {
             visibleButton.isHidden = true
         }
+        
         LoginAndRegisterHandler()
     }
     
     @IBAction func rememberMeButtonHandler(_ sender: Any) {
-        if(rememberMeButtonState) {
+        if rememberMeButtonState {
             rememberMeButton.setBackgroundImage(UIImage(named: "ic-checkbox-unselected"), for: .normal)
             rememberMeButtonState = false
         }
@@ -89,7 +63,7 @@ final class LoginViewController : UIViewController {
     }
     
     @IBAction func visibleButtonHandler(_ sender: Any) {
-        if(visibleButtonState) {
+        if visibleButtonState {
             visibleButton.setBackgroundImage(UIImage(named: "ic-invisible"), for: .normal)
             visibleButtonState = false
             passwordTextField.isSecureTextEntry = true
@@ -100,6 +74,58 @@ final class LoginViewController : UIViewController {
             passwordTextField.isSecureTextEntry = false
         }
         
+    }
+    
+    
+}
+
+
+private extension LoginViewController {
+    
+    func createPlaceholderAttributedString(text: String) -> NSAttributedString {
+        let attributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.7)
+        ]
+        return NSAttributedString(string: text, attributes: attributes)
+    }
+    
+    func setUpButtons() -> Void {
+        loginButton.layer.cornerRadius = 21.5
+        loginButton.alpha = 0.5
+        loginButton.isEnabled = false
+        registerButton.isEnabled = false
+        visibleButton.isHidden = true
+    }
+    
+    func setUpTextFields() -> Void {
+        usernameTextField.attributedPlaceholder = createPlaceholderAttributedString(text: "Email")
+        passwordTextField.attributedPlaceholder = createPlaceholderAttributedString(text: "Password")
+        passwordTextField.isSecureTextEntry = true
+    }
+    
+    func setupUI() -> Void {
+        setUpButtons()
+        setUpTextFields()
+    }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
+    func LoginAndRegisterHandler() -> Void {
+        if usernameTextField.hasText && passwordTextField.hasText && isValidEmail(usernameTextField.text ?? "") {
+            loginButton.isEnabled = true
+            loginButton.alpha = 1.0
+            registerButton.isEnabled = true
+        }
+        else {
+            loginButton.isEnabled = false
+            loginButton.alpha = 0.5
+            registerButton.isEnabled = false
+        }
     }
     
     

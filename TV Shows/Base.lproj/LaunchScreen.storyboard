@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="splash-top-left" translatesAutoresizingMaskIntoConstraints="NO" id="G44-ro-lOE">
-                                <rect key="frame" x="0.0" y="44" width="140" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="140" height="100"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="splash-top-right" translatesAutoresizingMaskIntoConstraints="NO" id="Okc-ed-G2n">
-                                <rect key="frame" x="188" y="44" width="202" height="266"/>
+                                <rect key="frame" x="188" y="0.0" width="202" height="266"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="4KJ-yK-sZz">
                                 <rect key="frame" x="114" y="403" width="162" height="38"/>
@@ -29,12 +29,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.32156862745098036" green="0.21176470588235294" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Okc-ed-G2n" secondAttribute="trailing" id="FJC-ni-KyJ"/>
-                            <constraint firstItem="Okc-ed-G2n" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aK9-Ff-pKj"/>
-                            <constraint firstItem="G44-ro-lOE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cz4-uZ-IRB"/>
+                            <constraint firstItem="G44-ro-lOE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XBQ-mg-tRc"/>
+                            <constraint firstItem="Okc-ed-G2n" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jmH-sx-v79"/>
+                            <constraint firstItem="G44-ro-lOE" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="lDF-dG-g7o"/>
                             <constraint firstItem="4KJ-yK-sZz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="o4R-Pc-82e"/>
-                            <constraint firstItem="G44-ro-lOE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="psU-Wt-UOP"/>
                             <constraint firstItem="4KJ-yK-sZz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="vwy-t5-EmI"/>
+                            <constraint firstItem="Okc-ed-G2n" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ztG-sP-nod"/>
                         </constraints>
                     </view>
                 </viewController>
