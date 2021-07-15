@@ -20,10 +20,10 @@
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="eHP-7r-TaN" userLabel="BackgroundImagesContainer">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="266"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="splash-top-left" translatesAutoresizingMaskIntoConstraints="NO" id="ihC-5H-nYm">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="splash-top-left" translatesAutoresizingMaskIntoConstraints="NO" id="ihC-5H-nYm">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="100"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="splash-top-right" translatesAutoresizingMaskIntoConstraints="NO" id="Nig-XX-7b6">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="splash-top-right" translatesAutoresizingMaskIntoConstraints="NO" id="Nig-XX-7b6">
                                         <rect key="frame" x="188" y="0.0" width="202" height="266"/>
                                     </imageView>
                                 </subviews>
@@ -155,7 +155,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU7-9F-hp9">
-                                <rect key="frame" x="143" y="545" width="109" height="20"/>
+                                <rect key="frame" x="140.66666666666666" y="545" width="109" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="109" id="Hwq-By-8n2"/>
                                     <constraint firstAttribute="height" constant="20" id="mWA-Ag-z7C"/>
@@ -182,9 +182,9 @@
                             <constraint firstItem="Xqx-ru-EwU" firstAttribute="top" secondItem="Ekm-qA-ViU" secondAttribute="bottom" constant="45" id="Scx-0i-kPQ"/>
                             <constraint firstItem="l66-lS-7Hl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="TAW-A2-Enr"/>
                             <constraint firstItem="Xqx-ru-EwU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="WEZ-2a-xAX"/>
-                            <constraint firstItem="l66-lS-7Hl" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="76" id="XE0-cd-Kqm"/>
+                            <constraint firstItem="l66-lS-7Hl" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="120" id="aup-Xb-x6R"/>
+                            <constraint firstItem="gU7-9F-hp9" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="c1f-Kr-7dz"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Xqx-ru-EwU" secondAttribute="trailing" constant="20" id="dCN-bh-2sE"/>
-                            <constraint firstItem="gU7-9F-hp9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="143" id="fq1-V7-Mfp"/>
                             <constraint firstItem="PiF-xQ-tm8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="iYK-Ob-dt6"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="l66-lS-7Hl" secondAttribute="trailing" constant="20" id="mlo-wS-5dg"/>
                             <constraint firstItem="eHP-7r-TaN" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="sdW-x8-pXD"/>
