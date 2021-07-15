@@ -52,11 +52,11 @@ final class LoginViewController : UIViewController {
     
     @IBAction func rememberMeButtonHandler(_ sender: Any) {
         if rememberMeButtonState {
-            rememberMeButton.setBackgroundImage(UIImage(named: "ic-checkbox-unselected"), for: .normal)
+            rememberMeButton.setImage(UIImage(named: "ic-checkbox-unselected"), for: .normal)
             rememberMeButtonState = false
         }
         else {
-            rememberMeButton.setBackgroundImage(UIImage(named: "ic-checkbox-selected"), for: .normal)
+            rememberMeButton.setImage(UIImage(named: "ic-checkbox-selected"), for: .normal)
             rememberMeButtonState = true
         }
         
