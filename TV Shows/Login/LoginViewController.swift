@@ -18,6 +18,7 @@ final class LoginViewController : UIViewController {
     @IBOutlet private weak var rememberMeButton: UIButton!
     @IBOutlet private weak var registerButton: UIButton!
     @IBOutlet private weak var visibleButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // MARK: - Properties
     
@@ -106,6 +107,9 @@ private extension LoginViewController {
     func setupUI() -> Void {
         setUpButtons()
         setUpTextFields()
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
     func isValidEmail(_ email: String) -> Bool {
@@ -128,5 +132,26 @@ private extension LoginViewController {
         }
     }
     
+    @objc func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue.height
+
+        if notification.name == UIResponder.keyboardDidHideNotification {
+            scrollView.contentInset = .zero
+        } else if notification.name == UIResponder.keyboardDidShowNotification {
+            if UIScreen.main.bounds.height - loginButton.frame.maxY > keyboardScreenEndFrame {
+                return
+            }
+            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardScreenEndFrame, right: 0)
+
+            DispatchQueue.main.async {
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: 188), animated: true)
+            }
+            scrollView.scrollIndicatorInsets = scrollView.contentInset
+        }
+    }
+    
     
 }
+

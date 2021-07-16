@@ -123,39 +123,29 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="center" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="1iC-Lc-LQl" userLabel="RememberMeButtonContainer">
-                                                <rect key="frame" x="20" y="431" width="168" height="24"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ao-MC-Mo4">
-                                                        <rect key="frame" x="0.0" y="0.0" width="168" height="24"/>
-                                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <state key="normal" title="Remember me" image="ic-checkbox-unselected"/>
-                                                        <state key="selected" title="Remember me" image="ic-checkbox-selected"/>
-                                                        <connections>
-                                                            <action selector="rememberMeButtonHandler:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ndu-xy-jFX"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="PiF-xQ-tm8" userLabel="LoginButtonContainer">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ao-MC-Mo4">
+                                                <rect key="frame" x="27" y="431" width="351" height="24"/>
+                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Remember me" image="ic-checkbox-unselected"/>
+                                                <state key="selected" title="Remember me" image="ic-checkbox-selected"/>
+                                                <connections>
+                                                    <action selector="rememberMeButtonHandler:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ndu-xy-jFX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAL-0h-RDa">
                                                 <rect key="frame" x="20" y="485" width="388" height="45"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAL-0h-RDa">
-                                                        <rect key="frame" x="0.0" y="0.0" width="388" height="45"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="45" id="dC0-HA-hX6"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                        <state key="normal" title="Login">
-                                                            <color key="titleColor" red="0.32156862749999998" green="0.21176470589999999" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                        <state key="disabled" title="Login">
-                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="dC0-HA-hX6"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <state key="normal" title="Login">
+                                                    <color key="titleColor" red="0.32156862749999998" green="0.21176470589999999" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled" title="Login">
+                                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU7-9F-hp9">
                                                 <rect key="frame" x="159.66666666666666" y="550" width="108.99999999999997" height="20"/>
                                                 <constraints>
@@ -173,26 +163,26 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.32156862749999998" green="0.21176470589999999" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="4ao-MC-Mo4" secondAttribute="trailing" constant="50" id="06f-J6-vPN"/>
+                                            <constraint firstItem="pAL-0h-RDa" firstAttribute="leading" secondItem="Zqy-Rq-VVk" secondAttribute="leading" constant="20" symbolic="YES" id="4p9-zr-pV1"/>
                                             <constraint firstItem="l66-lS-7Hl" firstAttribute="centerX" secondItem="Zqy-Rq-VVk" secondAttribute="centerX" id="5nb-QD-H5R"/>
                                             <constraint firstAttribute="height" priority="999" constant="600" id="DOV-Rl-wNN"/>
-                                            <constraint firstItem="PiF-xQ-tm8" firstAttribute="top" secondItem="1iC-Lc-LQl" secondAttribute="bottom" constant="30" id="FSr-Sj-wQM"/>
                                             <constraint firstItem="gU7-9F-hp9" firstAttribute="centerX" secondItem="Zqy-Rq-VVk" secondAttribute="centerX" id="HBj-o3-urt"/>
-                                            <constraint firstItem="PiF-xQ-tm8" firstAttribute="leading" secondItem="Zqy-Rq-VVk" secondAttribute="leading" constant="20" id="Pi0-4y-pbM"/>
+                                            <constraint firstItem="4ao-MC-Mo4" firstAttribute="top" secondItem="Xqx-ru-EwU" secondAttribute="bottom" constant="18" id="KMn-d5-UPG"/>
+                                            <constraint firstAttribute="trailing" secondItem="pAL-0h-RDa" secondAttribute="trailing" constant="20" id="Liv-sL-Z2o"/>
                                             <constraint firstItem="l66-lS-7Hl" firstAttribute="top" secondItem="Zqy-Rq-VVk" secondAttribute="top" constant="120" id="QO2-VZ-Xlw"/>
                                             <constraint firstItem="eHP-7r-TaN" firstAttribute="leading" secondItem="Zqy-Rq-VVk" secondAttribute="leading" id="UBI-cn-3MZ"/>
-                                            <constraint firstItem="1iC-Lc-LQl" firstAttribute="leading" secondItem="Zqy-Rq-VVk" secondAttribute="leading" constant="20" id="VQ3-L1-x5p"/>
-                                            <constraint firstItem="gU7-9F-hp9" firstAttribute="top" secondItem="PiF-xQ-tm8" secondAttribute="bottom" constant="20" id="VcB-vh-kPc"/>
-                                            <constraint firstAttribute="trailing" secondItem="1iC-Lc-LQl" secondAttribute="trailing" constant="240" id="WLe-dO-Pta"/>
-                                            <constraint firstItem="1iC-Lc-LQl" firstAttribute="top" secondItem="Xqx-ru-EwU" secondAttribute="bottom" constant="18" id="YCH-EU-jpv"/>
                                             <constraint firstItem="Ekm-qA-ViU" firstAttribute="top" secondItem="l66-lS-7Hl" secondAttribute="bottom" constant="30" id="cBk-qK-PIi"/>
-                                            <constraint firstAttribute="trailing" secondItem="PiF-xQ-tm8" secondAttribute="trailing" constant="20" id="ccb-Ha-reX"/>
                                             <constraint firstItem="Xqx-ru-EwU" firstAttribute="leading" secondItem="Zqy-Rq-VVk" secondAttribute="leading" constant="20" id="dBh-bn-goW"/>
                                             <constraint firstAttribute="trailing" secondItem="Xqx-ru-EwU" secondAttribute="trailing" constant="20" id="dVZ-YW-F1a"/>
                                             <constraint firstAttribute="trailing" secondItem="Ekm-qA-ViU" secondAttribute="trailing" constant="120" id="h4d-2d-2xa"/>
                                             <constraint firstItem="eHP-7r-TaN" firstAttribute="top" secondItem="Zqy-Rq-VVk" secondAttribute="top" id="hJ8-l3-QPq"/>
                                             <constraint firstItem="Xqx-ru-EwU" firstAttribute="top" secondItem="Ekm-qA-ViU" secondAttribute="bottom" constant="45" id="o6c-jZ-Pi7"/>
+                                            <constraint firstItem="pAL-0h-RDa" firstAttribute="top" secondItem="4ao-MC-Mo4" secondAttribute="bottom" constant="30" id="p2S-ab-imh"/>
+                                            <constraint firstItem="gU7-9F-hp9" firstAttribute="top" secondItem="pAL-0h-RDa" secondAttribute="bottom" constant="20" id="rO5-S8-Imd"/>
                                             <constraint firstItem="Ekm-qA-ViU" firstAttribute="leading" secondItem="Zqy-Rq-VVk" secondAttribute="leading" constant="20" id="uHl-Za-rLs"/>
                                             <constraint firstAttribute="trailing" secondItem="eHP-7r-TaN" secondAttribute="trailing" id="uJz-Sm-Ek4"/>
+                                            <constraint firstItem="4ao-MC-Mo4" firstAttribute="leading" secondItem="Zqy-Rq-VVk" secondAttribute="leading" constant="27" id="vdJ-tl-yIP"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -219,6 +209,7 @@
                         <outlet property="passwordTextField" destination="xWh-ju-guS" id="t2v-Yc-8DN"/>
                         <outlet property="registerButton" destination="gU7-9F-hp9" id="CVg-fu-y14"/>
                         <outlet property="rememberMeButton" destination="4ao-MC-Mo4" id="Qd1-JA-cmU"/>
+                        <outlet property="scrollView" destination="KWv-Ze-zOc" id="9Tq-Hg-79v"/>
                         <outlet property="usernameTextField" destination="6lR-mJ-LbE" id="bok-2G-Lwe"/>
                         <outlet property="visibleButton" destination="Qwm-m2-bIH" id="zOz-VF-iYN"/>
                     </connections>
