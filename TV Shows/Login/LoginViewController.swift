@@ -31,7 +31,7 @@ final class LoginViewController : UIViewController {
         
         super.viewDidLoad()
         setupUI()
-        
+      
     }
     
     // MARK: - Actions
@@ -47,7 +47,6 @@ final class LoginViewController : UIViewController {
         else {
             visibleButton.isHidden = true
         }
-        
         loginAndRegisterHandler()
     }
     
@@ -150,4 +149,3 @@ private extension LoginViewController {
     
     
 }
-
