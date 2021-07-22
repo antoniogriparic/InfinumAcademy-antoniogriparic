@@ -72,7 +72,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
-                                                                    <action selector="usernameTextFieldHandler:" destination="Y6W-OH-hqX" eventType="editingChanged" id="AV5-G8-ZpQ"/>
+                                                                    <action selector="loginTextFieldHandler" destination="Y6W-OH-hqX" eventType="editingChanged" id="c1O-7F-lcM"/>
                                                                 </connections>
                                                             </textField>
                                                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="bEV-CN-wJ0">
@@ -97,14 +97,14 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                         <connections>
-                                                                            <action selector="passwordTextFieldHandler:" destination="Y6W-OH-hqX" eventType="editingChanged" id="6f2-wd-bBz"/>
+                                                                            <action selector="passwordTextFieldHandler" destination="Y6W-OH-hqX" eventType="editingChanged" id="eWb-Vx-Oi2"/>
                                                                         </connections>
                                                                     </textField>
                                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qwm-m2-bIH">
                                                                         <rect key="frame" x="364" y="0.0" width="24" height="24"/>
                                                                         <state key="normal" backgroundImage="ic-invisible"/>
                                                                         <connections>
-                                                                            <action selector="visibleButtonHandler:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Hq2-sX-8rp"/>
+                                                                            <action selector="visibleButtonHandler" destination="Y6W-OH-hqX" eventType="touchUpInside" id="839-HU-fYO"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -129,7 +129,7 @@
                                                 <state key="normal" title="Remember me" image="ic-checkbox-unselected"/>
                                                 <state key="selected" title="Remember me" image="ic-checkbox-selected"/>
                                                 <connections>
-                                                    <action selector="rememberMeButtonHandler:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ndu-xy-jFX"/>
+                                                    <action selector="rememberMeButtonHandler" destination="Y6W-OH-hqX" eventType="touchUpInside" id="MjW-jy-RAa"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAL-0h-RDa">
