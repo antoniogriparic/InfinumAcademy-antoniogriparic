@@ -16,12 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="splash-top-left" translatesAutoresizingMaskIntoConstraints="NO" id="G44-ro-lOE">
-                                <rect key="frame" x="0.0" y="0.0" width="140" height="100"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="splash-top-right" translatesAutoresizingMaskIntoConstraints="NO" id="Okc-ed-G2n">
-                                <rect key="frame" x="188" y="0.0" width="202" height="266"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="qi2-ug-heA" userLabel="BackgroundImagesContainer">
+                                <rect key="frame" x="0.0" y="44" width="390" height="266"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="splash-top-left" translatesAutoresizingMaskIntoConstraints="NO" id="gfv-ce-Ub5">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="100"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="splash-top-right" translatesAutoresizingMaskIntoConstraints="NO" id="ELu-IV-stm">
+                                        <rect key="frame" x="188" y="0.0" width="202" height="266"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="4KJ-yK-sZz">
                                 <rect key="frame" x="114" y="403" width="162" height="38"/>
                             </imageView>
@@ -29,12 +34,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.32156862745098036" green="0.21176470588235294" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="G44-ro-lOE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XBQ-mg-tRc"/>
-                            <constraint firstItem="Okc-ed-G2n" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jmH-sx-v79"/>
-                            <constraint firstItem="G44-ro-lOE" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="lDF-dG-g7o"/>
-                            <constraint firstItem="4KJ-yK-sZz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="o4R-Pc-82e"/>
-                            <constraint firstItem="4KJ-yK-sZz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="vwy-t5-EmI"/>
-                            <constraint firstItem="Okc-ed-G2n" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ztG-sP-nod"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qi2-ug-heA" secondAttribute="trailing" id="5nx-1Y-NG5"/>
+                            <constraint firstItem="4KJ-yK-sZz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="AfI-fp-nUv"/>
+                            <constraint firstItem="4KJ-yK-sZz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FPN-XA-5Lb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="qi2-ug-heA" secondAttribute="leading" id="Z8g-8R-NnZ"/>
+                            <constraint firstItem="qi2-ug-heA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kb4-Mn-E6X"/>
                         </constraints>
                     </view>
                 </viewController>

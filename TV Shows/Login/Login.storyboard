@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pOv-rz-5hB">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -70,9 +70,9 @@
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="email"/>
                                                                 <connections>
-                                                                    <action selector="usernameTextFieldHandler:" destination="Y6W-OH-hqX" eventType="editingChanged" id="AV5-G8-ZpQ"/>
+                                                                    <action selector="usernameTextFieldHandler" destination="Y6W-OH-hqX" eventType="editingChanged" id="qPG-3C-8Od"/>
                                                                 </connections>
                                                             </textField>
                                                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="bEV-CN-wJ0">
@@ -97,14 +97,14 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                         <connections>
-                                                                            <action selector="passwordTextFieldHandler:" destination="Y6W-OH-hqX" eventType="editingChanged" id="6f2-wd-bBz"/>
+                                                                            <action selector="passwordTextFieldHandler" destination="Y6W-OH-hqX" eventType="editingChanged" id="dhe-Ee-e86"/>
                                                                         </connections>
                                                                     </textField>
                                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qwm-m2-bIH">
                                                                         <rect key="frame" x="364" y="0.0" width="24" height="24"/>
                                                                         <state key="normal" backgroundImage="ic-invisible"/>
                                                                         <connections>
-                                                                            <action selector="visibleButtonHandler:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Hq2-sX-8rp"/>
+                                                                            <action selector="visibleButtonHandler" destination="Y6W-OH-hqX" eventType="touchUpInside" id="viR-M9-sFg"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -129,7 +129,7 @@
                                                 <state key="normal" title="Remember me" image="ic-checkbox-unselected"/>
                                                 <state key="selected" title="Remember me" image="ic-checkbox-selected"/>
                                                 <connections>
-                                                    <action selector="rememberMeButtonHandler:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ndu-xy-jFX"/>
+                                                    <action selector="rememberMeButtonHandler" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nMs-tR-aCb"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAL-0h-RDa">
@@ -145,6 +145,9 @@
                                                 <state key="disabled" title="Login">
                                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="loginButtonHandler" destination="Y6W-OH-hqX" eventType="touchUpInside" id="C9b-Bk-Yxo"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU7-9F-hp9">
                                                 <rect key="frame" x="159.66666666666666" y="550" width="108.99999999999997" height="20"/>
@@ -159,6 +162,9 @@
                                                 <state key="disabled">
                                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="registerButtonHandler" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hdO-XD-iJs"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.32156862749999998" green="0.21176470589999999" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -176,13 +182,13 @@
                                             <constraint firstItem="Xqx-ru-EwU" firstAttribute="leading" secondItem="Zqy-Rq-VVk" secondAttribute="leading" constant="20" id="dBh-bn-goW"/>
                                             <constraint firstAttribute="trailing" secondItem="Xqx-ru-EwU" secondAttribute="trailing" constant="20" id="dVZ-YW-F1a"/>
                                             <constraint firstAttribute="trailing" secondItem="Ekm-qA-ViU" secondAttribute="trailing" constant="120" id="h4d-2d-2xa"/>
-                                            <constraint firstItem="eHP-7r-TaN" firstAttribute="top" secondItem="Zqy-Rq-VVk" secondAttribute="top" id="hJ8-l3-QPq"/>
                                             <constraint firstItem="Xqx-ru-EwU" firstAttribute="top" secondItem="Ekm-qA-ViU" secondAttribute="bottom" constant="45" id="o6c-jZ-Pi7"/>
                                             <constraint firstItem="pAL-0h-RDa" firstAttribute="top" secondItem="4ao-MC-Mo4" secondAttribute="bottom" constant="30" id="p2S-ab-imh"/>
                                             <constraint firstItem="gU7-9F-hp9" firstAttribute="top" secondItem="pAL-0h-RDa" secondAttribute="bottom" constant="20" id="rO5-S8-Imd"/>
                                             <constraint firstItem="Ekm-qA-ViU" firstAttribute="leading" secondItem="Zqy-Rq-VVk" secondAttribute="leading" constant="20" id="uHl-Za-rLs"/>
                                             <constraint firstAttribute="trailing" secondItem="eHP-7r-TaN" secondAttribute="trailing" id="uJz-Sm-Ek4"/>
                                             <constraint firstItem="4ao-MC-Mo4" firstAttribute="leading" secondItem="Zqy-Rq-VVk" secondAttribute="leading" constant="27" id="vdJ-tl-yIP"/>
+                                            <constraint firstItem="eHP-7r-TaN" firstAttribute="top" secondItem="Zqy-Rq-VVk" secondAttribute="top" id="zBY-9g-lDC"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -190,20 +196,22 @@
                                     <constraint firstItem="Zqy-Rq-VVk" firstAttribute="width" secondItem="KWv-Ze-zOc" secondAttribute="width" id="2eU-iB-ABM"/>
                                     <constraint firstAttribute="bottom" secondItem="Zqy-Rq-VVk" secondAttribute="bottom" id="Rj0-CI-Hrm"/>
                                     <constraint firstAttribute="trailing" secondItem="Zqy-Rq-VVk" secondAttribute="trailing" id="cXi-Pa-Wmw"/>
+                                    <constraint firstItem="Zqy-Rq-VVk" firstAttribute="top" secondItem="KWv-Ze-zOc" secondAttribute="top" id="fWr-qh-SVB"/>
                                     <constraint firstItem="Zqy-Rq-VVk" firstAttribute="leading" secondItem="KWv-Ze-zOc" secondAttribute="leading" id="mSr-cl-twG"/>
-                                    <constraint firstItem="Zqy-Rq-VVk" firstAttribute="top" secondItem="KWv-Ze-zOc" secondAttribute="top" id="vpg-zl-oKw"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <viewLayoutGuide key="safeArea" id="vj7-36-fMd"/>
                         <color key="backgroundColor" red="0.32156862749999998" green="0.21176470589999999" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="KWv-Ze-zOc" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="57i-ec-qaI"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KWv-Ze-zOc" secondAttribute="trailing" id="Oi5-pA-Pnj"/>
+                            <constraint firstItem="KWv-Ze-zOc" firstAttribute="bottom" secondItem="vj7-36-fMd" secondAttribute="bottom" id="57i-ec-qaI"/>
+                            <constraint firstItem="vj7-36-fMd" firstAttribute="trailing" secondItem="KWv-Ze-zOc" secondAttribute="trailing" id="Oi5-pA-Pnj"/>
                             <constraint firstItem="KWv-Ze-zOc" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="iux-xH-Kay"/>
-                            <constraint firstItem="KWv-Ze-zOc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="nau-HP-gve"/>
+                            <constraint firstItem="KWv-Ze-zOc" firstAttribute="leading" secondItem="vj7-36-fMd" secondAttribute="leading" id="nau-HP-gve"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Tu7-xQ-KGS"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="loginButton" destination="pAL-0h-RDa" id="ENc-nO-lyE"/>
                         <outlet property="passwordTextField" destination="xWh-ju-guS" id="t2v-Yc-8DN"/>
@@ -216,7 +224,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4.3478260869565224" y="58.258928571428569"/>
+            <point key="canvasLocation" x="904.20560747663546" y="57.667386609071279"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="n3b-1D-cm3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pOv-rz-5hB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gfW-b9-k79">
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="AG9-hy-1Ow"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mP1-9P-Vq0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4.2056074766355138" y="57.667386609071279"/>
         </scene>
     </scenes>
     <resources>

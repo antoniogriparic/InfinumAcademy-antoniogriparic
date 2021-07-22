@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+import Alamofire
 
 
 final class LoginViewController : UIViewController {
@@ -18,12 +20,12 @@ final class LoginViewController : UIViewController {
     @IBOutlet private weak var rememberMeButton: UIButton!
     @IBOutlet private weak var registerButton: UIButton!
     @IBOutlet private weak var visibleButton: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet private weak var scrollView: UIScrollView!
     
     // MARK: - Properties
     
-    private var rememberMeButtonState = false
-    private var visibleButtonState = false
+    private var rememberMeButtonEnabled = false
+    private var visibleButtonEnabled = false
     
     // MARK: - Lifecycle methods -
     
@@ -35,46 +37,49 @@ final class LoginViewController : UIViewController {
     }
     
     // MARK: - Actions
-
-    @IBAction func usernameTextFieldHandler(_ sender: Any) {
-        LoginAndRegisterHandler()
+    
+    @IBAction func usernameTextFieldHandler() {
+        loginAndRegisterHandler()
     }
     
-    @IBAction func passwordTextFieldHandler(_ sender: Any) {
+    @IBAction func passwordTextFieldHandler() {
         if passwordTextField.hasText {
             visibleButton.isHidden = false
         }
         else {
             visibleButton.isHidden = true
         }
-        
-        LoginAndRegisterHandler()
+        loginAndRegisterHandler()
     }
     
-    @IBAction func rememberMeButtonHandler(_ sender: Any) {
-        if rememberMeButtonState {
+    @IBAction func rememberMeButtonHandler() {
+        if rememberMeButtonEnabled {
             rememberMeButton.setImage(UIImage(named: "ic-checkbox-unselected"), for: .normal)
-            rememberMeButtonState = false
         }
         else {
             rememberMeButton.setImage(UIImage(named: "ic-checkbox-selected"), for: .normal)
-            rememberMeButtonState = true
         }
-        
+        rememberMeButtonEnabled.toggle()
     }
     
-    @IBAction func visibleButtonHandler(_ sender: Any) {
-        if visibleButtonState {
+    @IBAction func visibleButtonHandler() {
+        if visibleButtonEnabled {
             visibleButton.setBackgroundImage(UIImage(named: "ic-invisible"), for: .normal)
-            visibleButtonState = false
             passwordTextField.isSecureTextEntry = true
         }
         else {
             visibleButton.setBackgroundImage(UIImage(named: "ic-visible"), for: .normal)
-            visibleButtonState = true
             passwordTextField.isSecureTextEntry = false
         }
-        
+        visibleButtonEnabled.toggle()
+    }
+    
+    @IBAction func loginButtonHandler() {
+        navigateToHomeScreen()
+    }
+    
+    @IBAction func registerButtonHandler() {
+        navigateToHomeScreen()
     }
     
     
@@ -90,7 +95,7 @@ private extension LoginViewController {
         return NSAttributedString(string: text, attributes: attributes)
     }
     
-    func setUpButtons() -> Void {
+    func setUpButtons() {
         loginButton.layer.cornerRadius = 21.5
         loginButton.alpha = 0.5
         loginButton.isEnabled = false
@@ -98,18 +103,19 @@ private extension LoginViewController {
         visibleButton.isHidden = true
     }
     
-    func setUpTextFields() -> Void {
+    func setUpTextFields() {
         usernameTextField.attributedPlaceholder = createPlaceholderAttributedString(text: "Email")
         passwordTextField.attributedPlaceholder = createPlaceholderAttributedString(text: "Password")
         passwordTextField.isSecureTextEntry = true
     }
     
-    func setupUI() -> Void {
+    func setupUI() {
         setUpButtons()
         setUpTextFields()
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidHideNotification, object: nil)
+        navigationController?.isNavigationBarHidden = true
     }
     
     func isValidEmail(_ email: String) -> Bool {
@@ -119,7 +125,7 @@ private extension LoginViewController {
         return emailPred.evaluate(with: email)
     }
     
-    func LoginAndRegisterHandler() -> Void {
+    func loginAndRegisterHandler(){
         if usernameTextField.hasText && passwordTextField.hasText && isValidEmail(usernameTextField.text ?? "") {
             loginButton.isEnabled = true
             loginButton.alpha = 1.0
@@ -150,6 +156,12 @@ private extension LoginViewController {
             }
             scrollView.scrollIndicatorInsets = scrollView.contentInset
         }
+    }
+    
+    func navigateToHomeScreen() {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+        navigationController?.pushViewController(homeViewController, animated: true)
     }
     
     
