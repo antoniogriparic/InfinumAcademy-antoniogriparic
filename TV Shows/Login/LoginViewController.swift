@@ -75,10 +75,14 @@ final class LoginViewController : UIViewController {
     }
     
     @IBAction func loginButtonHandler() {
+        guard let email = usernameTextField.text, let password = passwordTextField.text else { return }
+        loginUserWith(email: email, password: password)
         navigateToHomeScreen()
     }
     
     @IBAction func registerButtonHandler() {
+        guard let email = usernameTextField.text, let password = passwordTextField.text else { return }
+        registerUserWith(email: email, password: password)
         navigateToHomeScreen()
     }
     
@@ -167,3 +171,75 @@ private extension LoginViewController {
     
 }
 
+
+private extension LoginViewController {
+    func registerUserWith(email : String , password : String) {
+        
+        SVProgressHUD.show()
+        
+        let parametars: [String: String] = [
+            "password" : password,
+            "email" : email,
+            "password_confirmation" : password
+        ]
+        
+        AF
+            .request(
+                "https://tv-shows.infinum.academy/users",
+                method: .post,
+                parameters: parametars,
+                encoder: JSONParameterEncoder.default
+            )
+            .validate()
+            .responseDecodable(of: UserResponse.self) { response in
+                switch response.result {
+                case .success(let userResponse):
+                    print(userResponse)
+                    self.loginUserWith(email: email , password : password)
+                case .failure(let error):
+                    SVProgressHUD.showError(withStatus: "Error")
+                    print("Error : \(error)")
+                }
+            }
+    }
+    
+    func loginUserWith(email : String, password : String) {
+        
+        SVProgressHUD.show()
+        
+        let parametars : [String: String] = [
+            "email" : email,
+            "password" : password
+        ]
+        
+        AF
+            .request(
+                "https://tv-shows.infinum.academy/users/sign_in",
+                method: .post,
+                parameters: parametars,
+                encoder: JSONParameterEncoder.default
+            )
+            .validate()
+            .responseDecodable(of: UserResponse.self) { [weak self] response in
+                switch response.result {
+                case .success(let userResponse):
+                    let headers = response.response?.headers.dictionary ?? [:]
+                    self?.handleSuccesfulLogin(user: userResponse.user, headers: headers)
+                case .failure(let error):
+                    print(error)
+                    SVProgressHUD.showError(withStatus: "Error")
+                }
+            }
+    }
+    
+    func handleSuccesfulLogin(user: User, headers: [String: String]) {
+        guard let authInfo = try? AuthInfo(headers: headers) else {
+            SVProgressHUD.showError(withStatus: "Missing Headers")
+            return
+        }
+        print(authInfo)
+        SVProgressHUD.showSuccess(withStatus: "Success")
+    }
+    
+    
+}
