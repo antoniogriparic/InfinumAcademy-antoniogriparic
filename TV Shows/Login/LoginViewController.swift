@@ -114,7 +114,7 @@ private extension LoginViewController {
         return emailPred.evaluate(with: email)
     }
     
-    func loginAndRegisterHandler() -> Void {
+    func loginAndRegisterHandler() {
         if usernameTextField.hasText && passwordTextField.hasText && isValidEmail(usernameTextField.text ?? "") {
             loginButton.isEnabled = true
             loginButton.alpha = 1.0
