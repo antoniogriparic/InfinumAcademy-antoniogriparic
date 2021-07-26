@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 final class LoginViewController : UIViewController {
     
@@ -33,6 +34,11 @@ final class LoginViewController : UIViewController {
         setupUI()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
+            navigationController?.setNavigationBarHidden(true, animated: animated)
+        }
     
     // MARK: - Actions
     
@@ -73,15 +79,48 @@ final class LoginViewController : UIViewController {
     }
     
     @IBAction func loginButtonHandler() {
+        
+        SVProgressHUD.show()
+        
         guard let email = usernameTextField.text, let password = passwordTextField.text else { return }
-        userService.loginUserWith(email: email, password: password)
-        navigateToHomeScreen()
+        
+        userService.loginUserWith(email: email, password: password) { [weak self] response in
+                switch response.result {
+                case .success(let userResponse):
+                    let headers = response.response?.headers.dictionary ?? [:]
+                    self?.handleSuccesfulLogin(user: userResponse.user, headers: headers)
+                case .failure(let error):
+                    print(error)
+                    SVProgressHUD.showError(withStatus: "Error")
+                }
+        }
     }
     
     @IBAction func registerButtonHandler() {
+        
+        SVProgressHUD.show()
+        
         guard let email = usernameTextField.text, let password = passwordTextField.text else { return }
-        userService.registerUserWith(email: email, password: password)
-        navigateToHomeScreen()
+        
+        userService.registerUserWith(email: email, password: password) { response in
+            switch response.result {
+            case .success( _):
+                self.userService.loginUserWith(email: email , password : password) { [weak self] response in
+                        switch response.result {
+                        case .success(let userResponse):
+                            let headers = response.response?.headers.dictionary ?? [:]
+                            self?.handleSuccesfulLogin(user: userResponse.user, headers: headers)
+                        case .failure(let error):
+                            print(error)
+                            SVProgressHUD.showError(withStatus: "Error")
+                        }
+                }
+                
+            case .failure(let error):
+                SVProgressHUD.showError(withStatus: "Error")
+                print("Registration Error : \(error)")
+            }
+        }
     }
     
     
@@ -117,7 +156,6 @@ private extension LoginViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidHideNotification, object: nil)
-        navigationController?.isNavigationBarHidden = true
     }
     
     func isValidEmail(_ email: String) -> Bool {
@@ -164,6 +202,16 @@ private extension LoginViewController {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         navigationController?.pushViewController(homeViewController, animated: true)
+    }
+    
+    func handleSuccesfulLogin(user: User, headers: [String: String]) {
+        guard let authInfo = try? AuthInfo(headers: headers) else {
+            SVProgressHUD.showError(withStatus: "Missing Headers")
+            return
+        }
+        print(authInfo)
+        navigateToHomeScreen()
+        SVProgressHUD.showSuccess(withStatus: "Success")
     }
     
     
