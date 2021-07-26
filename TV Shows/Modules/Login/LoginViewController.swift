@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 final class LoginViewController : UIViewController {
     
@@ -32,6 +33,11 @@ final class LoginViewController : UIViewController {
         super.viewDidLoad()
         setupUI()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     // MARK: - Actions
@@ -73,17 +79,46 @@ final class LoginViewController : UIViewController {
     }
     
     @IBAction func loginButtonHandler() {
+        
+        SVProgressHUD.show()
+        
         guard let email = usernameTextField.text, let password = passwordTextField.text else { return }
-        userService.loginUserWith(email: email, password: password)
-        navigateToHomeScreen()
+        
+        userService.loginUserWith(email: email, password: password) {  [weak self] response in
+            
+            guard let self = self else {return}
+            
+            switch response.result {
+            case .success( _):
+                self.navigateToHomeScreen()
+                SVProgressHUD.showSuccess(withStatus: "Success")
+            case .failure( _):
+                SVProgressHUD.dismiss()
+                self.showAlter(title: "Login Error")
+            }
+        }
     }
     
     @IBAction func registerButtonHandler() {
+        
+        SVProgressHUD.show()
+        
         guard let email = usernameTextField.text, let password = passwordTextField.text else { return }
-        userService.registerUserWith(email: email, password: password)
-        navigateToHomeScreen()
+        
+        userService.registerUserWith(email: email, password: password) { [weak self] response in
+            
+            guard let self = self else {return}
+            
+            switch response.result {
+            case .success( _):
+                self.navigateToHomeScreen()
+                SVProgressHUD.showSuccess(withStatus: "Success")
+            case .failure( _):
+                SVProgressHUD.dismiss()
+                self.showAlter(title: "Registration Error")
+            }
+        }
     }
-    
     
 }
 
@@ -166,5 +201,12 @@ private extension LoginViewController {
         navigationController?.pushViewController(homeViewController, animated: true)
     }
     
-    
+    func showAlter(title: String) {
+        let alertController = UIAlertController(title: title, message: "", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            alertController.dismiss(animated: true)
+        }
+        alertController.addAction(OKAction)
+        self.present(alertController, animated: true)
+    }
 }

@@ -46,7 +46,8 @@ enum UserRouter : URLRequestConvertible {
     }
     
     func asURLRequest() throws -> URLRequest {
-        var urlRequest = try URLRequest(url: Constants.API.baseURL + path, method: method , headers: nil)
+        let headers = SessionManager.shared.authInfo?.headers ?? [:]
+        var urlRequest = try URLRequest(url: Constants.API.baseURL + path, method: method , headers: HTTPHeaders(headers))
         urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
         return urlRequest
     }
