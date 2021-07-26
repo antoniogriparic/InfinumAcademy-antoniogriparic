@@ -25,6 +25,7 @@ final class LoginViewController : UIViewController {
     private var rememberMeButtonEnabled = false
     private var visibleButtonEnabled = false
     private var userService = UserService()
+
     
     // MARK: - Lifecycle methods -
     
@@ -32,7 +33,7 @@ final class LoginViewController : UIViewController {
         
         super.viewDidLoad()
         setupUI()
-        
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,8 +42,9 @@ final class LoginViewController : UIViewController {
         }
     
     // MARK: - Actions
-    
+  
     @IBAction func usernameTextFieldHandler() {
+
         loginAndRegisterHandler()
     }
     
@@ -166,6 +168,7 @@ private extension LoginViewController {
     }
     
     func loginAndRegisterHandler(){
+
         if usernameTextField.hasText && passwordTextField.hasText && isValidEmail(usernameTextField.text ?? "") {
             loginButton.isEnabled = true
             loginButton.alpha = 1.0
