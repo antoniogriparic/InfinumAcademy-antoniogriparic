@@ -3,26 +3,38 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2753418C14FF090C146AA7DA /* Pods_TV_Shows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B892B08D83706879453998 /* Pods_TV_Shows.framework */; };
 		42094798269C48C1004D0338 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42094797269C48C1004D0338 /* Login.storyboard */; };
 		4209479A269C48E2004D0338 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42094799269C48E2004D0338 /* LoginViewController.swift */; };
+		422B69B926A9C4D50066AE4B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422B69B826A9C4D50066AE4B /* User.swift */; };
 		422CD818269C696200BB860C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 422CD817269C696200BB860C /* Assets.xcassets */; };
 		42610F8B26975F450024A42A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42610F8A26975F450024A42A /* AppDelegate.swift */; };
 		42610F9726975F460024A42A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42610F9526975F460024A42A /* LaunchScreen.storyboard */; };
+		42756DB926AAE23500B08B03 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42756DB826AAE23500B08B03 /* UserService.swift */; };
+		42756DBB26AAE56600B08B03 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42756DBA26AAE56600B08B03 /* UserRouter.swift */; };
+		42756DBD26AAE9BE00B08B03 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42756DBC26AAE9BE00B08B03 /* Constants.swift */; };
+		42EA68F226A9890F00D6A159 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA68F126A9890F00D6A159 /* HomeViewController.swift */; };
+		42EA68F426A9893400D6A159 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42EA68F326A9893400D6A159 /* Home.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		42094797269C48C1004D0338 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		42094799269C48E2004D0338 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		422B69B826A9C4D50066AE4B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		422CD817269C696200BB860C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42610F8726975F450024A42A /* TV Shows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Shows.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42610F8A26975F450024A42A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42610F9626975F460024A42A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42610F9826975F460024A42A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42756DB826AAE23500B08B03 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		42756DBA26AAE56600B08B03 /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
+		42756DBC26AAE9BE00B08B03 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		42EA68F126A9890F00D6A159 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		42EA68F326A9893400D6A159 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		5149C8418CDA68615EA1529D /* Pods-TV Shows.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Shows.release.xcconfig"; path = "Target Support Files/Pods-TV Shows/Pods-TV Shows.release.xcconfig"; sourceTree = "<group>"; };
 		6AC80C1302B7AA73FD79BDD6 /* Pods-TV Shows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Shows.debug.xcconfig"; path = "Target Support Files/Pods-TV Shows/Pods-TV Shows.debug.xcconfig"; sourceTree = "<group>"; };
 		71B892B08D83706879453998 /* Pods_TV_Shows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV_Shows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +57,7 @@
 			children = (
 				42094797269C48C1004D0338 /* Login.storyboard */,
 				42094799269C48E2004D0338 /* LoginViewController.swift */,
+				422B69B826A9C4D50066AE4B /* User.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -70,13 +83,26 @@
 		42610F8926975F450024A42A /* TV Shows */ = {
 			isa = PBXGroup;
 			children = (
+				42EA68F026A988D800D6A159 /* Home */,
 				42094796269C4888004D0338 /* Login */,
 				42610F8A26975F450024A42A /* AppDelegate.swift */,
 				42610F9526975F460024A42A /* LaunchScreen.storyboard */,
 				422CD817269C696200BB860C /* Assets.xcassets */,
 				42610F9826975F460024A42A /* Info.plist */,
+				42756DB826AAE23500B08B03 /* UserService.swift */,
+				42756DBA26AAE56600B08B03 /* UserRouter.swift */,
+				42756DBC26AAE9BE00B08B03 /* Constants.swift */,
 			);
 			path = "TV Shows";
+			sourceTree = "<group>";
+		};
+		42EA68F026A988D800D6A159 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				42EA68F126A9890F00D6A159 /* HomeViewController.swift */,
+				42EA68F326A9893400D6A159 /* Home.storyboard */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		66AA3FE369732C1A24246C9E /* Pods */ = {
@@ -85,7 +111,6 @@
 				6AC80C1302B7AA73FD79BDD6 /* Pods-TV Shows.debug.xcconfig */,
 				5149C8418CDA68615EA1529D /* Pods-TV Shows.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -159,6 +184,7 @@
 				42610F9726975F460024A42A /* LaunchScreen.storyboard in Resources */,
 				422CD818269C696200BB860C /* Assets.xcassets in Resources */,
 				42094798269C48C1004D0338 /* Login.storyboard in Resources */,
+				42EA68F426A9893400D6A159 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,8 +237,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				422B69B926A9C4D50066AE4B /* User.swift in Sources */,
+				42756DBB26AAE56600B08B03 /* UserRouter.swift in Sources */,
+				42756DB926AAE23500B08B03 /* UserService.swift in Sources */,
 				4209479A269C48E2004D0338 /* LoginViewController.swift in Sources */,
+				42756DBD26AAE9BE00B08B03 /* Constants.swift in Sources */,
 				42610F8B26975F450024A42A /* AppDelegate.swift in Sources */,
+				42EA68F226A9890F00D6A159 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

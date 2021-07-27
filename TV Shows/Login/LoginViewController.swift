@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 
 final class LoginViewController : UIViewController {
     
@@ -24,6 +24,8 @@ final class LoginViewController : UIViewController {
     
     private var rememberMeButtonEnabled = false
     private var visibleButtonEnabled = false
+    private var userService = UserService()
+
     
     // MARK: - Lifecycle methods -
     
@@ -34,9 +36,15 @@ final class LoginViewController : UIViewController {
       
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
+            navigationController?.setNavigationBarHidden(true, animated: animated)
+        }
+    
     // MARK: - Actions
+  
+    @IBAction func usernameTextFieldHandler() {
 
-    @IBAction func loginTextFieldHandler() {
         loginAndRegisterHandler()
     }
     
@@ -70,6 +78,51 @@ final class LoginViewController : UIViewController {
             passwordTextField.isSecureTextEntry = false
         }
         visibleButtonEnabled.toggle()
+    }
+    
+    @IBAction func loginButtonHandler() {
+        
+        SVProgressHUD.show()
+        
+        guard let email = usernameTextField.text, let password = passwordTextField.text else { return }
+        
+        userService.loginUserWith(email: email, password: password) { [weak self] response in
+                switch response.result {
+                case .success(let userResponse):
+                    let headers = response.response?.headers.dictionary ?? [:]
+                    self?.handleSuccesfulLogin(user: userResponse.user, headers: headers)
+                case .failure(let error):
+                    print(error)
+                    SVProgressHUD.showError(withStatus: "Error")
+                }
+        }
+    }
+    
+    @IBAction func registerButtonHandler() {
+        
+        SVProgressHUD.show()
+        
+        guard let email = usernameTextField.text, let password = passwordTextField.text else { return }
+        
+        userService.registerUserWith(email: email, password: password) { response in
+            switch response.result {
+            case .success( _):
+                self.userService.loginUserWith(email: email , password : password) { [weak self] response in
+                        switch response.result {
+                        case .success(let userResponse):
+                            let headers = response.response?.headers.dictionary ?? [:]
+                            self?.handleSuccesfulLogin(user: userResponse.user, headers: headers)
+                        case .failure(let error):
+                            print(error)
+                            SVProgressHUD.showError(withStatus: "Error")
+                        }
+                }
+                
+            case .failure(let error):
+                SVProgressHUD.showError(withStatus: "Error")
+                print("Registration Error : \(error)")
+            }
+        }
     }
     
     
@@ -114,7 +167,8 @@ private extension LoginViewController {
         return emailPred.evaluate(with: email)
     }
     
-    func loginAndRegisterHandler() {
+    func loginAndRegisterHandler(){
+
         if usernameTextField.hasText && passwordTextField.hasText && isValidEmail(usernameTextField.text ?? "") {
             loginButton.isEnabled = true
             loginButton.alpha = 1.0
@@ -145,6 +199,22 @@ private extension LoginViewController {
             }
             scrollView.scrollIndicatorInsets = scrollView.contentInset
         }
+    }
+    
+    func navigateToHomeScreen() {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+        navigationController?.pushViewController(homeViewController, animated: true)
+    }
+    
+    func handleSuccesfulLogin(user: User, headers: [String: String]) {
+        guard let authInfo = try? AuthInfo(headers: headers) else {
+            SVProgressHUD.showError(withStatus: "Missing Headers")
+            return
+        }
+        print(authInfo)
+        navigateToHomeScreen()
+        SVProgressHUD.showSuccess(withStatus: "Success")
     }
     
     
