@@ -11,6 +11,10 @@ struct ReviewResponse: Decodable {
     let reviews: [Review]
 }
 
+struct PostReviewResponse: Decodable {
+    let review: Review
+}
+
 struct Review : Decodable {
     let id: String
     let comment : String

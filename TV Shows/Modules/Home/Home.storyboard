@@ -214,24 +214,125 @@
                                     <outlet property="delegate" destination="JZS-1D-Ceq" id="vz0-fZ-NqE"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uag-hj-3lK">
+                                <rect key="frame" x="20" y="739" width="374" height="45"/>
+                                <color key="backgroundColor" red="0.32156862749999998" green="0.21176470589999999" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="hrQ-W5-9Tg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Write a Review">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="newReviewButtonHandler" destination="JZS-1D-Ceq" eventType="touchUpInside" id="jfB-T2-7Ck"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mi3-qM-G7n"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="uag-hj-3lK" firstAttribute="leading" secondItem="mi3-qM-G7n" secondAttribute="leading" constant="20" id="1RR-b4-EMl"/>
                             <constraint firstItem="n70-gB-BUC" firstAttribute="trailing" secondItem="mi3-qM-G7n" secondAttribute="trailing" id="COf-4O-GlL"/>
                             <constraint firstItem="n70-gB-BUC" firstAttribute="leading" secondItem="mi3-qM-G7n" secondAttribute="leading" id="FGY-FT-FqA"/>
                             <constraint firstItem="mi3-qM-G7n" firstAttribute="bottom" secondItem="n70-gB-BUC" secondAttribute="bottom" id="JTO-Oe-fEG"/>
+                            <constraint firstAttribute="bottom" secondItem="uag-hj-3lK" secondAttribute="bottom" constant="24" id="P2q-bK-6sI"/>
+                            <constraint firstItem="mi3-qM-G7n" firstAttribute="trailing" secondItem="uag-hj-3lK" secondAttribute="trailing" constant="20" id="Y4f-5v-LqT"/>
                             <constraint firstItem="n70-gB-BUC" firstAttribute="top" secondItem="mi3-qM-G7n" secondAttribute="top" id="zD4-br-gNe"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="newReviewButton" destination="uag-hj-3lK" id="UTz-5D-21d"/>
                         <outlet property="tableView" destination="n70-gB-BUC" id="JRJ-Uy-Kbb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T3L-Qm-Dcc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1789.8550724637682" y="59.598214285714285"/>
+        </scene>
+        <!--Write Review View Controller-->
+        <scene sceneID="eBq-1b-fsZ">
+            <objects>
+                <viewController storyboardIdentifier="WriteReviewViewController" id="Muj-GR-VND" customClass="WriteReviewViewController" customModule="TV_Shows" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qzy-N1-XyN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBA-Is-K4T">
+                                <rect key="frame" x="20" y="74" width="49" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MvT-yn-hJD" customClass="RatingView" customModule="TV_Shows" customModuleProvider="target">
+                                <rect key="frame" x="20" y="110" width="294" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="caw-at-K5g"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9S-RD-6xO">
+                                <rect key="frame" x="20" y="180" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2EQ-7o-FxQ">
+                                <rect key="frame" x="20" y="216" width="374" height="200"/>
+                                <color key="backgroundColor" white="0.91642896172140731" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Jfv-5Z-Y5F"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Muj-GR-VND" id="dZV-xK-sB1"/>
+                                </connections>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myx-NR-miy">
+                                <rect key="frame" x="20" y="446" width="374" height="45"/>
+                                <color key="backgroundColor" red="0.32156862749999998" green="0.21176470589999999" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="HHZ-rV-HS6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButtonHandler" destination="Muj-GR-VND" eventType="touchUpInside" id="LcV-Wb-trW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dOM-9S-qoy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2EQ-7o-FxQ" firstAttribute="leading" secondItem="dOM-9S-qoy" secondAttribute="leading" constant="20" id="0Fr-PM-6bW"/>
+                            <constraint firstItem="MvT-yn-hJD" firstAttribute="top" secondItem="tBA-Is-K4T" secondAttribute="bottom" constant="15" id="8CX-bU-SFw"/>
+                            <constraint firstItem="dOM-9S-qoy" firstAttribute="trailing" secondItem="MvT-yn-hJD" secondAttribute="trailing" constant="100" id="FDI-HY-Y1e"/>
+                            <constraint firstItem="myx-NR-miy" firstAttribute="leading" secondItem="dOM-9S-qoy" secondAttribute="leading" constant="20" id="FGx-Oj-yWp"/>
+                            <constraint firstItem="H9S-RD-6xO" firstAttribute="top" secondItem="MvT-yn-hJD" secondAttribute="bottom" constant="30" id="Tff-Hn-psu"/>
+                            <constraint firstItem="MvT-yn-hJD" firstAttribute="leading" secondItem="dOM-9S-qoy" secondAttribute="leading" constant="20" id="UtZ-Tu-kKk"/>
+                            <constraint firstItem="dOM-9S-qoy" firstAttribute="trailing" secondItem="2EQ-7o-FxQ" secondAttribute="trailing" constant="20" id="gPv-Co-tvZ"/>
+                            <constraint firstItem="H9S-RD-6xO" firstAttribute="leading" secondItem="dOM-9S-qoy" secondAttribute="leading" constant="20" id="i05-Hp-VyO"/>
+                            <constraint firstItem="tBA-Is-K4T" firstAttribute="leading" secondItem="dOM-9S-qoy" secondAttribute="leading" constant="20" id="jxT-fq-2zL"/>
+                            <constraint firstItem="dOM-9S-qoy" firstAttribute="trailing" secondItem="myx-NR-miy" secondAttribute="trailing" constant="20" id="lLZ-ee-GVu"/>
+                            <constraint firstItem="tBA-Is-K4T" firstAttribute="top" secondItem="dOM-9S-qoy" secondAttribute="top" constant="30" id="n36-vG-GRn"/>
+                            <constraint firstItem="2EQ-7o-FxQ" firstAttribute="top" secondItem="H9S-RD-6xO" secondAttribute="bottom" constant="15" id="sxk-is-42A"/>
+                            <constraint firstItem="myx-NR-miy" firstAttribute="top" secondItem="2EQ-7o-FxQ" secondAttribute="bottom" constant="30" id="ugF-RR-9xU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commentTextView" destination="2EQ-7o-FxQ" id="jhW-cH-pKJ"/>
+                        <outlet property="ratingView" destination="MvT-yn-hJD" id="mSp-Vt-OgY"/>
+                        <outlet property="submitButton" destination="myx-NR-miy" id="jsR-Ms-SFO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ib-6k-sYQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2610" y="60"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RTO-eo-Dcd">
@@ -253,6 +354,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

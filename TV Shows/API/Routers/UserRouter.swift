@@ -10,8 +10,8 @@ import Alamofire
 
 enum UserRouter : URLRequestConvertible {
     
-    case login(email : String, password : String)
-    case register(email : String, password : String)
+    case login(email: String, password: String)
+    case register(email: String, password: String)
     
     var path : String {
         switch self {

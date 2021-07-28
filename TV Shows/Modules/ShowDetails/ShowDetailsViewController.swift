@@ -12,12 +12,14 @@ class ShowDetailsViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var newReviewButton: UIButton!
     
     // MARK: - Properties
    
     var show: Show? = nil
     private var showService = ShowService()
     private var reviewResponse = ReviewResponse(reviews: [])
+    private var writeReviewViewController: WriteReviewViewController?
     
     // MARK: - Lifecycle methods -
     
@@ -26,6 +28,18 @@ class ShowDetailsViewController: UIViewController {
         self.title = show?.title
         tableView.dataSource = self
         fetchReviews()
+        newReviewButton.layer.cornerRadius = 21.5
+        writeReviewViewController?.delegate = self
+    }
+    
+    // MARK: - Actions
+
+    @IBAction func newReviewButtonHandler() {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let writeReviewViewController = storyboard.instantiateViewController(withIdentifier: "WriteReviewViewController") as! WriteReviewViewController
+        writeReviewViewController.show = show
+        let navigationController = UINavigationController(rootViewController:writeReviewViewController)
+        present(navigationController, animated: true)
     }
     
     func fetchReviews() {
@@ -92,6 +106,14 @@ extension ShowDetailsViewController: UITableViewDelegate {
         else {
             return 140
         }
+    }
+    
+}
+
+extension ShowDetailsViewController: WriteReviewViewControllerDelegate {
+    
+    func reviewDidPublish() {
+        self.tableView.reloadData()
     }
     
 }

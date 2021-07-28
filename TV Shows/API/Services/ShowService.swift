@@ -21,10 +21,21 @@ final class ShowService {
     }
     
     func fetchReviewsList(showId: String, completion: @escaping (DataResponse<ReviewResponse, AFError>) -> Void) {
+        
         AF
             .request(ShowRouter.listReviews(showId: showId))
             .validate()
             .responseDecodable(of: ReviewResponse.self) { dataResponse in
+                completion(dataResponse)
+            }
+    }
+    
+    func publishReview(showId: String, rating: String, comment: String,completion: @escaping (DataResponse<PostReviewResponse, AFError>) -> Void) {
+        
+        AF
+            .request(ShowRouter.publishReview(showId: showId, rating: rating, comment: comment))
+            .validate()
+            .responseDecodable(of: PostReviewResponse.self) { dataResponse in
                 completion(dataResponse)
             }
     }

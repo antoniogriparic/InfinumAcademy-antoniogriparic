@@ -201,6 +201,11 @@ private extension LoginViewController {
         navigationController?.pushViewController(homeViewController, animated: true)
     }
     
+    
+}
+
+extension UIViewController {
+    
     func showAlter(title: String) {
         let alertController = UIAlertController(title: title, message: "", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
@@ -209,4 +214,5 @@ private extension LoginViewController {
         alertController.addAction(OKAction)
         self.present(alertController, animated: true)
     }
+    
 }
