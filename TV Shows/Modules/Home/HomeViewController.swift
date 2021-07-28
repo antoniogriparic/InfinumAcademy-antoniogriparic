@@ -60,6 +60,13 @@ private extension HomeViewController {
             }
         }
     }
+    
+    func navigateToShowDetails(show: Show) {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let showDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ShowDetailsViewController") as! ShowDetailsViewController
+        showDetailsViewController.show = show
+        navigationController?.pushViewController(showDetailsViewController, animated: true)
+    }
         
 }
 
@@ -82,6 +89,7 @@ extension HomeViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        navigateToShowDetails(show: showsResponse.shows[indexPath.row])
     }
     
 }

@@ -19,4 +19,14 @@ final class ShowService {
                 completion(dataResponse)
             }
     }
+    
+    func fetchReviewsList(showId: String, completion: @escaping (DataResponse<ReviewResponse, AFError>) -> Void) {
+        AF
+            .request(ShowRouter.listReviews(showId: showId))
+            .validate()
+            .responseDecodable(of: ReviewResponse.self) { dataResponse in
+                completion(dataResponse)
+            }
+    }
+    
 }
