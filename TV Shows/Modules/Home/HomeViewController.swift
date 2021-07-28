@@ -10,10 +10,16 @@ import SVProgressHUD
 
 final class HomeViewController : UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet private weak var tableView: UITableView!
+    
+    // MARK: - Properties
     
     private var showsResponse = ShowsResponse(shows: [])
     private var showService = ShowService()
+    
+    // MARK: - Lifecycle methods -
     
     override func viewDidLoad() {
         
@@ -25,11 +31,15 @@ final class HomeViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setViewControllers([self], animated: true)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-        self.title = "Shows"
-        
+        navigationController?.setViewControllers([self], animated: false)
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+}
+
+
+private extension HomeViewController {
     
     func fetchShows() {
         
@@ -38,6 +48,7 @@ final class HomeViewController : UIViewController {
         showService.fetchShows() { [weak self] response in
             
             guard let self = self else {return}
+            
             SVProgressHUD.dismiss()
             
             switch response.result {
@@ -49,8 +60,7 @@ final class HomeViewController : UIViewController {
             }
         }
     }
-    
-    
+        
 }
 
 
@@ -65,5 +75,13 @@ extension HomeViewController : UITableViewDataSource {
         return cell
     }
     
+}
+
+
+extension HomeViewController : UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
 }

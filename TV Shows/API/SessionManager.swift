@@ -10,6 +10,7 @@ import Foundation
 final class SessionManager {
     
     static let shared: SessionManager = SessionManager()
+    
     var authInfo: AuthInfo?
     
     private init() {}

@@ -105,12 +105,10 @@
 		4284AD6626AD6AC200B23383 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				42AFD5EC26B002D20023D09A /* Services */,
+				42AFD5EB26B002BA0023D09A /* Routers */,
 				42756DBC26AAE9BE00B08B03 /* Constants.swift */,
-				42756DBA26AAE56600B08B03 /* UserRouter.swift */,
-				42756DB826AAE23500B08B03 /* UserService.swift */,
 				4247A38026AEDBDC00EBE04B /* SessionManager.swift */,
-				4247A38226AEE62F00EBE04B /* ShowService.swift */,
-				4247A38426AEE6FD00EBE04B /* ShowRouter.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -131,6 +129,24 @@
 				42EA68F026A988D800D6A159 /* Home */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		42AFD5EB26B002BA0023D09A /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				42756DBA26AAE56600B08B03 /* UserRouter.swift */,
+				4247A38426AEE6FD00EBE04B /* ShowRouter.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		42AFD5EC26B002D20023D09A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				42756DB826AAE23500B08B03 /* UserService.swift */,
+				4247A38226AEE62F00EBE04B /* ShowService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		42EA68F026A988D800D6A159 /* Home */ = {
