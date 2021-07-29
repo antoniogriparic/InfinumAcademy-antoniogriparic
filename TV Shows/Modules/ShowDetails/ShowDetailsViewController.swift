@@ -78,9 +78,7 @@ extension ShowDetailsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: ShowDetailsTableViewCell.self),
                 for: indexPath) as! ShowDetailsTableViewCell
-            cell.configure(description: show?.description ?? "nesto",
-                           numberOfReviews: show?.noOfReviews ?? 0,
-                           averageRating: show?.averageRating ?? 0)
+            cell.configure(show: show)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(

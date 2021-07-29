@@ -36,7 +36,12 @@ enum ShowRouter : URLRequestConvertible {
     
     var parameters: [String: String] {
         switch self {
-        case .shows, .listReviews:
+        case .shows:
+            return [
+                "page": "1",
+                "items": "100"
+            ]
+        case .listReviews:
             return ["":""]
         case .publishReview(let showId, let rating, let comment):
             return [
@@ -49,7 +54,15 @@ enum ShowRouter : URLRequestConvertible {
     
     func asURLRequest() throws -> URLRequest {
         switch self {
-        case .shows, .listReviews:
+        case .shows:
+            let headers = SessionManager.shared.authInfo?.headers ?? [:]
+            var urlRequest = try URLRequest(
+                url: Constants.API.baseURL + path,
+                method: method ,
+                headers: HTTPHeaders(headers))
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+            return urlRequest
+        case .listReviews:
             let headers = SessionManager.shared.authInfo?.headers ?? [:]
             let urlRequest = try URLRequest(
                 url: Constants.API.baseURL + path,
