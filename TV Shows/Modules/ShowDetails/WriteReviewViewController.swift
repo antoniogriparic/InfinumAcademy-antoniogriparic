@@ -13,28 +13,26 @@ protocol WriteReviewViewControllerDelegate: AnyObject {
 
 class WriteReviewViewController: UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet private weak var ratingView: RatingView!
     @IBOutlet private weak var commentTextView: UITextView!
     @IBOutlet private weak var submitButton: UIButton!
     
+    // MARK: - Properties
+    
     private var showService = ShowService()
     var show: Show? = nil
     weak var delegate: WriteReviewViewControllerDelegate?
+    
+    // MARK: - Lifecycle methods -
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: "Close",
-            style: .plain,
-            target: self,
-            action: #selector(didSelectClose)
-        )
-        
-        commentTextView.text = "Enter your comment here..."
-        commentTextView.textColor = .lightGray
-        submitButton.layer.cornerRadius = 21.5
+        setUpUI()
     }
+    
+    // MARK: - Actions
     
     @IBAction func submitButtonHandler() {
         guard commentTextView.hasText && ratingView.rating > 0 , let unwrapedShow = show else { return }
@@ -56,8 +54,23 @@ class WriteReviewViewController: UIViewController {
         }
     }
     
+    // MARK: - Private Functions
+    
     @objc private func didSelectClose() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func setUpUI() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: "Close",
+            style: .plain,
+            target: self,
+            action: #selector(didSelectClose)
+        )
+        
+        commentTextView.text = "Enter your comment here..."
+        commentTextView.textColor = .lightGray
+        submitButton.layer.cornerRadius = 21.5
     }
     
 }

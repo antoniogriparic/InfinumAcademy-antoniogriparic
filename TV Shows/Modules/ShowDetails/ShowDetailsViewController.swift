@@ -19,17 +19,12 @@ class ShowDetailsViewController: UIViewController {
     var show: Show? = nil
     private var showService = ShowService()
     private var reviewResponse = ReviewResponse(reviews: [])
-    private var writeReviewViewController: WriteReviewViewController?
     
     // MARK: - Lifecycle methods -
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = show?.title
-        tableView.dataSource = self
-        fetchReviews()
-        newReviewButton.layer.cornerRadius = 21.5
-        writeReviewViewController?.delegate = self
+        setUpUI()
     }
     
     // MARK: - Actions
@@ -38,11 +33,14 @@ class ShowDetailsViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let writeReviewViewController = storyboard.instantiateViewController(withIdentifier: "WriteReviewViewController") as! WriteReviewViewController
         writeReviewViewController.show = show
+        writeReviewViewController.delegate = self
         let navigationController = UINavigationController(rootViewController:writeReviewViewController)
         present(navigationController, animated: true)
     }
     
-    func fetchReviews() {
+    // MARK: - Private Functions
+    
+     private func fetchReviews() {
         guard let unwrapedShow = show else {return}
         showService.fetchReviewsList(showId: unwrapedShow.id) { [weak self] response in
                 
@@ -56,6 +54,13 @@ class ShowDetailsViewController: UIViewController {
                     print("Error fetching reviews! \(error)")
                 }
         }
+    }
+    
+    private func setUpUI() {
+        self.title = show?.title
+        tableView.dataSource = self
+        fetchReviews()
+        newReviewButton.layer.cornerRadius = 21.5
     }
 
 }
@@ -113,7 +118,7 @@ extension ShowDetailsViewController: UITableViewDelegate {
 extension ShowDetailsViewController: WriteReviewViewControllerDelegate {
     
     func reviewDidPublish() {
-        self.tableView.reloadData()
+        self.fetchReviews()
     }
     
 }

@@ -52,5 +52,4 @@ enum UserRouter : URLRequestConvertible {
         return urlRequest
     }
     
-    
 }

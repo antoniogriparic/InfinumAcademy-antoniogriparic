@@ -9,10 +9,14 @@ import UIKit
 
 class ReviewTableViewCell: UITableViewCell {
     
+    // MARK: - Outlets
+    
     @IBOutlet private weak var emailLabel: UILabel!
     @IBOutlet private weak var commentLabel: UILabel!
     @IBOutlet private weak var profileImage: UIImageView!
     @IBOutlet private weak var ratingView: RatingView!
+    
+    // MARK: - Lifecycle methods -
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +25,8 @@ class ReviewTableViewCell: UITableViewCell {
         ratingView.isEnabled = false
         ratingView.configure(withStyle: .small)
     }
+    
+    // MARK: - Private Functions
     
     func configure(email: String, comment: String, rating: Int) {
         emailLabel.text = email

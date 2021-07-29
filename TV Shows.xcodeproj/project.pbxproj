@@ -77,10 +77,9 @@
 		4209422326B14BB600E91B63 /* ShowDetails */ = {
 			isa = PBXGroup;
 			children = (
+				42752BA926B2B5B200DB7B2E /* Cells */,
 				4209422126B1493200E91B63 /* ShowDetailsViewController.swift */,
-				42B5120126B16F1F006A8642 /* ShowDetailsTableViewCell.swift */,
 				42626D7E26B19AA6009ADDE1 /* Review.swift */,
-				42F4A14E26B1E51C00D160F4 /* ReviewTableViewCell.swift */,
 				42EDA47226B1FD28009C92E4 /* WriteReviewViewController.swift */,
 			);
 			path = ShowDetails;
@@ -124,6 +123,15 @@
 				4284AD6626AD6AC200B23383 /* API */,
 			);
 			path = "TV Shows";
+			sourceTree = "<group>";
+		};
+		42752BA926B2B5B200DB7B2E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				42B5120126B16F1F006A8642 /* ShowDetailsTableViewCell.swift */,
+				42F4A14E26B1E51C00D160F4 /* ReviewTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		4284AD6626AD6AC200B23383 /* API */ = {

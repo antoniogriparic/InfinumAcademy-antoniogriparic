@@ -13,7 +13,6 @@ class TVShowTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
 
     func configure(with showName: String) {
