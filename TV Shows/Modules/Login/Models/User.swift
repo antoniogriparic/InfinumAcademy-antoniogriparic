@@ -48,6 +48,14 @@ struct AuthInfo: Codable {
             let decoder = JSONDecoder()
             self = try decoder.decode(Self.self, from: data)
     }
+    
+    init(accessToken: String, client: String, tokenType: String, expiry: String, uid: String) {
+        self.accessToken = accessToken
+        self.client = client
+        self.tokenType = tokenType
+        self.expiry = expiry
+        self.uid = uid
+    }
 
     var headers: [String: String] {
         do {
@@ -58,6 +66,5 @@ struct AuthInfo: Codable {
             return [:]
         }
     }
-    
     
 }

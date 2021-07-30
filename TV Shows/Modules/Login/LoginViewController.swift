@@ -90,6 +90,11 @@ final class LoginViewController : UIViewController {
             
             switch response.result {
             case .success( _):
+                if self.rememberMeButtonEnabled {
+                    if let authInfo = SessionManager.shared.authInfo {
+                        KeychainManager.addAuthInfo(authInfo: authInfo)
+                    }
+                }
                 self.navigateToHomeScreen()
                 SVProgressHUD.showSuccess(withStatus: "Success")
             case .failure( _):
@@ -112,6 +117,11 @@ final class LoginViewController : UIViewController {
             
             switch response.result {
             case .success( _):
+                if self.rememberMeButtonEnabled {
+                    if let authInfo = SessionManager.shared.authInfo {
+                        KeychainManager.addAuthInfo(authInfo: authInfo)
+                    }
+                }
                 self.navigateToHomeScreen()
                 SVProgressHUD.showSuccess(withStatus: "Success")
             case .failure( _):
