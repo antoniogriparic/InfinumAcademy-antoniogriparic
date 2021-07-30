@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ReviewTableViewCell: UITableViewCell {
     
@@ -28,10 +29,15 @@ class ReviewTableViewCell: UITableViewCell {
     
     // MARK: - Private Functions
     
-    func configure(email: String, comment: String, rating: Int) {
-        emailLabel.text = email
-        commentLabel.text = comment
-        ratingView.setRoundedRating(Double(rating))
+    func configure(review: Review) {
+        emailLabel.text = review.user.email
+        commentLabel.text = review.comment
+        ratingView.setRoundedRating(Double(review.rating))
+        if let userImage = review.user.imageUrl {
+            let url = URL(string: userImage)
+            let placeholder = UIImage(named: "ic-profile-placeholder")
+            profileImage.kf.setImage(with: url, placeholder: placeholder)
+        }
     }
 
 }

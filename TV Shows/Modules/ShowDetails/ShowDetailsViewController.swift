@@ -84,9 +84,7 @@ extension ShowDetailsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing : ReviewTableViewCell.self),
                 for: indexPath) as! ReviewTableViewCell
-            cell.configure(email: reviewResponse.reviews[indexPath.row - 1].user.email,
-                           comment: reviewResponse.reviews[indexPath.row - 1].comment,
-                           rating: reviewResponse.reviews[indexPath.row - 1].rating)
+            cell.configure(review: reviewResponse.reviews[indexPath.row - 1])
             return cell
         }
     }

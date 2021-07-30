@@ -94,7 +94,8 @@ final class LoginViewController : UIViewController {
                 SVProgressHUD.showSuccess(withStatus: "Success")
             case .failure( _):
                 SVProgressHUD.dismiss()
-                self.showAlter(title: "Login Error")
+                self.shakeLoginButtonAnimation()
+                self.showAlter(title: "Username or Password incorrect. Try again.")
             }
         }
     }
@@ -146,13 +147,47 @@ private extension LoginViewController {
         passwordTextField.isSecureTextEntry = true
     }
     
+    func animateOnStartUp() {
+        loginButton.alpha = 0
+        registerButton.alpha = 0
+        
+        loginButton.transform = CGAffineTransform.init(scaleX: 1.1, y: 1.1)
+        registerButton.transform = CGAffineTransform.init(scaleX: 1.1, y: 1.1)
+        
+        UIView.animate(
+            withDuration: 2,
+            delay: 0,
+            options: []
+        ) {
+            self.loginButton.alpha = 0.5
+            self.registerButton.alpha = 1.0
+            self.loginButton.transform = CGAffineTransform.identity
+            self.registerButton.transform = CGAffineTransform.identity
+        }
+    }
+    
     func setupUI() {
         setUpButtons()
         setUpTextFields()
+        animateOnStartUp()
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidHideNotification, object: nil)
         navigationController?.isNavigationBarHidden = true
+    }
+    
+    func shakeLoginButtonAnimation() {
+        loginButton.transform = CGAffineTransform(translationX: 12.0, y: 0)
+        
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 0.4,
+            initialSpringVelocity: 1.0,
+            options: .curveEaseInOut
+        ) {
+            self.loginButton.transform = CGAffineTransform.identity
+        }
     }
     
     func isValidEmail(_ email: String) -> Bool {
