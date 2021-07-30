@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="qi2-ug-heA" userLabel="BackgroundImagesContainer">
-                                <rect key="frame" x="0.0" y="44" width="390" height="266"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="266"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="splash-top-left" translatesAutoresizingMaskIntoConstraints="NO" id="gfv-ce-Ub5">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="100"/>
@@ -37,8 +37,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qi2-ug-heA" secondAttribute="trailing" id="5nx-1Y-NG5"/>
                             <constraint firstItem="4KJ-yK-sZz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="AfI-fp-nUv"/>
                             <constraint firstItem="4KJ-yK-sZz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FPN-XA-5Lb"/>
+                            <constraint firstItem="qi2-ug-heA" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="FrI-xr-YPt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="qi2-ug-heA" secondAttribute="leading" id="Z8g-8R-NnZ"/>
-                            <constraint firstItem="qi2-ug-heA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kb4-Mn-E6X"/>
                         </constraints>
                     </view>
                 </viewController>

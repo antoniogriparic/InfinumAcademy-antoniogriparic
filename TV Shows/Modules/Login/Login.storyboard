@@ -23,17 +23,6 @@
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqy-Rq-VVk">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="600"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="eHP-7r-TaN" userLabel="BackgroundImagesContainer">
-                                                <rect key="frame" x="0.0" y="0.0" width="428" height="266"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="splash-top-left" translatesAutoresizingMaskIntoConstraints="NO" id="ihC-5H-nYm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="178" height="100"/>
-                                                    </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="splash-top-right" translatesAutoresizingMaskIntoConstraints="NO" id="Nig-XX-7b6">
-                                                        <rect key="frame" x="226" y="0.0" width="202" height="266"/>
-                                                    </imageView>
-                                                </subviews>
-                                            </stackView>
                                             <stackView opaque="NO" contentMode="center" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="l66-lS-7Hl" userLabel="LogoContainer">
                                                 <rect key="frame" x="133" y="120" width="162" height="38"/>
                                                 <subviews>
@@ -177,7 +166,6 @@
                                             <constraint firstItem="4ao-MC-Mo4" firstAttribute="top" secondItem="Xqx-ru-EwU" secondAttribute="bottom" constant="18" id="KMn-d5-UPG"/>
                                             <constraint firstAttribute="trailing" secondItem="pAL-0h-RDa" secondAttribute="trailing" constant="20" id="Liv-sL-Z2o"/>
                                             <constraint firstItem="l66-lS-7Hl" firstAttribute="top" secondItem="Zqy-Rq-VVk" secondAttribute="top" constant="120" id="QO2-VZ-Xlw"/>
-                                            <constraint firstItem="eHP-7r-TaN" firstAttribute="leading" secondItem="Zqy-Rq-VVk" secondAttribute="leading" id="UBI-cn-3MZ"/>
                                             <constraint firstItem="Ekm-qA-ViU" firstAttribute="top" secondItem="l66-lS-7Hl" secondAttribute="bottom" constant="30" id="cBk-qK-PIi"/>
                                             <constraint firstItem="Xqx-ru-EwU" firstAttribute="leading" secondItem="Zqy-Rq-VVk" secondAttribute="leading" constant="20" id="dBh-bn-goW"/>
                                             <constraint firstAttribute="trailing" secondItem="Xqx-ru-EwU" secondAttribute="trailing" constant="20" id="dVZ-YW-F1a"/>
@@ -186,9 +174,7 @@
                                             <constraint firstItem="pAL-0h-RDa" firstAttribute="top" secondItem="4ao-MC-Mo4" secondAttribute="bottom" constant="30" id="p2S-ab-imh"/>
                                             <constraint firstItem="gU7-9F-hp9" firstAttribute="top" secondItem="pAL-0h-RDa" secondAttribute="bottom" constant="20" id="rO5-S8-Imd"/>
                                             <constraint firstItem="Ekm-qA-ViU" firstAttribute="leading" secondItem="Zqy-Rq-VVk" secondAttribute="leading" constant="20" id="uHl-Za-rLs"/>
-                                            <constraint firstAttribute="trailing" secondItem="eHP-7r-TaN" secondAttribute="trailing" id="uJz-Sm-Ek4"/>
                                             <constraint firstItem="4ao-MC-Mo4" firstAttribute="leading" secondItem="Zqy-Rq-VVk" secondAttribute="leading" constant="27" id="vdJ-tl-yIP"/>
-                                            <constraint firstItem="eHP-7r-TaN" firstAttribute="top" secondItem="Zqy-Rq-VVk" secondAttribute="top" id="zBY-9g-lDC"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -200,14 +186,28 @@
                                     <constraint firstItem="Zqy-Rq-VVk" firstAttribute="leading" secondItem="KWv-Ze-zOc" secondAttribute="leading" id="mSr-cl-twG"/>
                                 </constraints>
                             </scrollView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="eHP-7r-TaN" userLabel="BackgroundImagesContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="266"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="splash-top-left" translatesAutoresizingMaskIntoConstraints="NO" id="ihC-5H-nYm">
+                                        <rect key="frame" x="0.0" y="0.0" width="178" height="100"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="splash-top-right" translatesAutoresizingMaskIntoConstraints="NO" id="Nig-XX-7b6">
+                                        <rect key="frame" x="226" y="0.0" width="202" height="266"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vj7-36-fMd"/>
                         <color key="backgroundColor" red="0.32156862749999998" green="0.21176470589999999" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="vj7-36-fMd" firstAttribute="trailing" secondItem="eHP-7r-TaN" secondAttribute="trailing" id="0pc-pN-OjD"/>
                             <constraint firstItem="KWv-Ze-zOc" firstAttribute="bottom" secondItem="vj7-36-fMd" secondAttribute="bottom" id="57i-ec-qaI"/>
                             <constraint firstItem="vj7-36-fMd" firstAttribute="trailing" secondItem="KWv-Ze-zOc" secondAttribute="trailing" id="Oi5-pA-Pnj"/>
                             <constraint firstItem="KWv-Ze-zOc" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="iux-xH-Kay"/>
                             <constraint firstItem="KWv-Ze-zOc" firstAttribute="leading" secondItem="vj7-36-fMd" secondAttribute="leading" id="nau-HP-gve"/>
+                            <constraint firstItem="eHP-7r-TaN" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="soA-wz-D76"/>
+                            <constraint firstItem="eHP-7r-TaN" firstAttribute="leading" secondItem="vj7-36-fMd" secondAttribute="leading" id="wCx-hU-BR7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Tu7-xQ-KGS"/>

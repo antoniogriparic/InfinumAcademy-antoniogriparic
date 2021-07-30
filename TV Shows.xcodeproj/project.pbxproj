@@ -45,7 +45,7 @@
 		42610F8726975F450024A42A /* TV Shows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Shows.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42610F8A26975F450024A42A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42610F9626975F460024A42A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		42610F9826975F460024A42A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42610F9826975F460024A42A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "TV Shows/Assets/Info.plist"; sourceTree = SOURCE_ROOT; };
 		42626D7E26B19AA6009ADDE1 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		42756DB826AAE23500B08B03 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		42756DBA26AAE56600B08B03 /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
@@ -77,9 +77,9 @@
 		4209422326B14BB600E91B63 /* ShowDetails */ = {
 			isa = PBXGroup;
 			children = (
+				42678E6026B40D1F00175E12 /* Models */,
 				42752BA926B2B5B200DB7B2E /* Cells */,
 				4209422126B1493200E91B63 /* ShowDetailsViewController.swift */,
-				42626D7E26B19AA6009ADDE1 /* Review.swift */,
 				42EDA47226B1FD28009C92E4 /* WriteReviewViewController.swift */,
 			);
 			path = ShowDetails;
@@ -88,9 +88,9 @@
 		42094796269C4888004D0338 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				42678E5F26B40CFA00175E12 /* Models */,
 				42094797269C48C1004D0338 /* Login.storyboard */,
 				42094799269C48E2004D0338 /* LoginViewController.swift */,
-				422B69B826A9C4D50066AE4B /* User.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -116,13 +116,53 @@
 		42610F8926975F450024A42A /* TV Shows */ = {
 			isa = PBXGroup;
 			children = (
-				42610F9826975F460024A42A /* Info.plist */,
-				42610F8A26975F450024A42A /* AppDelegate.swift */,
+				42678E6126B40D8500175E12 /* Application */,
 				4284AD6826AD6BAA00B23383 /* Modules */,
 				4284AD6726AD6B1600B23383 /* Assets */,
-				4284AD6626AD6AC200B23383 /* API */,
+				4284AD6626AD6AC200B23383 /* Networking */,
 			);
 			path = "TV Shows";
+			sourceTree = "<group>";
+		};
+		42678E5D26B40CC200175E12 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4247A38626AEF56600EBE04B /* TVShowTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		42678E5E26B40CD600175E12 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				42B5120326B17F25006A8642 /* RatingView.swift */,
+				4284AD7126ADAC5B00B23383 /* Show.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		42678E5F26B40CFA00175E12 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				422B69B826A9C4D50066AE4B /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		42678E6026B40D1F00175E12 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				42626D7E26B19AA6009ADDE1 /* Review.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		42678E6126B40D8500175E12 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				42610F8A26975F450024A42A /* AppDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		42752BA926B2B5B200DB7B2E /* Cells */ = {
@@ -134,7 +174,7 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		4284AD6626AD6AC200B23383 /* API */ = {
+		4284AD6626AD6AC200B23383 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				42AFD5EC26B002D20023D09A /* Services */,
@@ -142,12 +182,13 @@
 				42756DBC26AAE9BE00B08B03 /* Constants.swift */,
 				4247A38026AEDBDC00EBE04B /* SessionManager.swift */,
 			);
-			path = API;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		4284AD6726AD6B1600B23383 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				42610F9826975F460024A42A /* Info.plist */,
 				42610F9526975F460024A42A /* LaunchScreen.storyboard */,
 				422CD817269C696200BB860C /* Assets.xcassets */,
 			);
@@ -185,11 +226,10 @@
 		42EA68F026A988D800D6A159 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				42678E5E26B40CD600175E12 /* Models */,
+				42678E5D26B40CC200175E12 /* Cells */,
 				42EA68F126A9890F00D6A159 /* HomeViewController.swift */,
 				42EA68F326A9893400D6A159 /* Home.storyboard */,
-				4284AD7126ADAC5B00B23383 /* Show.swift */,
-				4247A38626AEF56600EBE04B /* TVShowTableViewCell.swift */,
-				42B5120326B17F25006A8642 /* RatingView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -484,7 +524,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "TV Shows/Info.plist";
+				INFOPLIST_FILE = "TV Shows/Assets/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -503,7 +543,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "TV Shows/Info.plist";
+				INFOPLIST_FILE = "TV Shows/Assets/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
