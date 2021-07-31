@@ -17,8 +17,9 @@ class ShowDetailsViewController: UIViewController {
     // MARK: - Properties
    
     var show: Show? = nil
-    private var showService = ShowService()
+    private let showService = ShowService()
     private var reviewResponse = ReviewResponse(reviews: [])
+    private let refreshControl = UIRefreshControl()
     
     // MARK: - Lifecycle methods -
     
@@ -50,6 +51,7 @@ class ShowDetailsViewController: UIViewController {
                 case .success(let reviewResponse):
                     self.reviewResponse = reviewResponse
                     self.tableView.reloadData()
+                    self.refreshControl.endRefreshing()
                 case .failure(let error):
                     print("Error fetching reviews! \(error)")
                 }
@@ -59,8 +61,14 @@ class ShowDetailsViewController: UIViewController {
     private func setUpUI() {
         self.title = show?.title
         tableView.dataSource = self
+        tableView.refreshControl = refreshControl
         fetchReviews()
         newReviewButton.layer.cornerRadius = 21.5
+        refreshControl.addTarget(self, action: #selector(refreshReviews(_:)), for: .valueChanged)
+    }
+    
+    @objc private func refreshReviews(_ sender: Any) {
+        fetchReviews()
     }
 
 }
@@ -110,6 +118,7 @@ extension ShowDetailsViewController: UITableViewDelegate {
     }
     
 }
+
 
 extension ShowDetailsViewController: WriteReviewViewControllerDelegate {
     

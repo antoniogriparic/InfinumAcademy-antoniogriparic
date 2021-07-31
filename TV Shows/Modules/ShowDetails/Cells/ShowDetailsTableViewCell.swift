@@ -30,11 +30,18 @@ class ShowDetailsTableViewCell: UITableViewCell {
         
         guard let showUnwrapped = show else { return }
         
-        let avgRating = showUnwrapped.averageRating ?? 0
         descriptionLabel.text = showUnwrapped.description
-        numberOfReviewsLabel.text =
-            "\(showUnwrapped.noOfReviews) REVIEWS, \(avgRating) AVERAGE"
-        ratingView.setRoundedRating(avgRating)
+        
+        if showUnwrapped.noOfReviews == 0 {
+            ratingView.isHidden = true
+            numberOfReviewsLabel.text = "No reviews yet."
+        }
+        else {
+            let avgRating = showUnwrapped.averageRating ?? 0
+            numberOfReviewsLabel.text =
+                "\(showUnwrapped.noOfReviews) REVIEWS, \(avgRating) AVERAGE"
+            ratingView.setRoundedRating(avgRating)
+        }
         
         if let showImageUrl = showUnwrapped.imageUrl {
             let url = URL(string: showImageUrl)
