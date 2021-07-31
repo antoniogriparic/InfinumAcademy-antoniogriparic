@@ -27,6 +27,7 @@
 		4284AD7226ADAC5B00B23383 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4284AD7126ADAC5B00B23383 /* Show.swift */; };
 		42B5120226B16F1F006A8642 /* ShowDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B5120126B16F1F006A8642 /* ShowDetailsTableViewCell.swift */; };
 		42B5120426B17F25006A8642 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B5120326B17F25006A8642 /* RatingView.swift */; };
+		42E9AD6E26B5A06A00BDB187 /* ProfileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E9AD6D26B5A06A00BDB187 /* ProfileDetailsViewController.swift */; };
 		42EA68F226A9890F00D6A159 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA68F126A9890F00D6A159 /* HomeViewController.swift */; };
 		42EA68F426A9893400D6A159 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42EA68F326A9893400D6A159 /* Home.storyboard */; };
 		42EDA47326B1FD28009C92E4 /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EDA47226B1FD28009C92E4 /* WriteReviewViewController.swift */; };
@@ -55,6 +56,7 @@
 		4284AD7126ADAC5B00B23383 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		42B5120126B16F1F006A8642 /* ShowDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		42B5120326B17F25006A8642 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		42E9AD6D26B5A06A00BDB187 /* ProfileDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsViewController.swift; sourceTree = "<group>"; };
 		42EA68F126A9890F00D6A159 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		42EA68F326A9893400D6A159 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		42EDA47226B1FD28009C92E4 /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				42752BA926B2B5B200DB7B2E /* Cells */,
 				4209422126B1493200E91B63 /* ShowDetailsViewController.swift */,
 				42EDA47226B1FD28009C92E4 /* WriteReviewViewController.swift */,
+				42E9AD6D26B5A06A00BDB187 /* ProfileDetailsViewController.swift */,
 			);
 			path = ShowDetails;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				42756DB926AAE23500B08B03 /* UserService.swift in Sources */,
 				42B5120226B16F1F006A8642 /* ShowDetailsTableViewCell.swift in Sources */,
 				42626D7F26B19AA6009ADDE1 /* Review.swift in Sources */,
+				42E9AD6E26B5A06A00BDB187 /* ProfileDetailsViewController.swift in Sources */,
 				4209479A269C48E2004D0338 /* LoginViewController.swift in Sources */,
 				42756DBD26AAE9BE00B08B03 /* Constants.swift in Sources */,
 				42610F8B26975F450024A42A /* AppDelegate.swift in Sources */,

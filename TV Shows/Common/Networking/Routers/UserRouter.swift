@@ -12,6 +12,7 @@ enum UserRouter : URLRequestConvertible {
     
     case login(email: String, password: String)
     case register(email: String, password: String)
+    case user
     
     var path : String {
         switch self {
@@ -19,13 +20,17 @@ enum UserRouter : URLRequestConvertible {
             return "/users/sign_in"
         case .register:
             return "/users"
+        case .user:
+            return "/users/me"
         }
     }
     
     var method : HTTPMethod {
         switch self {
-        default :
+        case .login, .register:
             return .post
+        case .user:
+            return .get
         }
     }
     
@@ -42,14 +47,23 @@ enum UserRouter : URLRequestConvertible {
                 "password" : password,
                 "password_confirmation" : password
             ]
+        case .user:
+            return ["":""]
         }
     }
     
     func asURLRequest() throws -> URLRequest {
-        let headers = SessionManager.shared.authInfo?.headers ?? [:]
-        var urlRequest = try URLRequest(url: Constants.API.baseURL + path, method: method , headers: HTTPHeaders(headers))
-        urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
-        return urlRequest
+        switch self {
+        case .login, .register:
+            let headers = SessionManager.shared.authInfo?.headers ?? [:]
+            var urlRequest = try URLRequest(url: Constants.API.baseURL + path, method: method , headers: HTTPHeaders(headers))
+            urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
+            return urlRequest
+        case .user:
+            let headers = SessionManager.shared.authInfo?.headers ?? [:]
+            let urlRequest = try URLRequest(url: Constants.API.baseURL + path, method: method , headers: HTTPHeaders(headers))
+            return urlRequest
+        }
     }
     
 }

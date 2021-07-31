@@ -32,4 +32,14 @@ final class UserService {
             }
     }
     
+    func getCurrentUser(completion: @escaping (DataResponse<UserResponse, AFError>) -> Void) {
+        
+        AF
+            .request(UserRouter.user)
+            .validate()
+            .responseDecodable(of: UserResponse.self) { dataResponse in
+                completion(dataResponse)
+            }
+    }
+    
 }

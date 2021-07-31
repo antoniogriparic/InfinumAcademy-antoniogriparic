@@ -67,6 +67,7 @@ class WriteReviewViewController: UIViewController {
             target: self,
             action: #selector(didSelectClose)
         )
+        navigationItem.title = "Write a Review"
         
         commentTextView.text = "Enter your comment here..."
         commentTextView.textColor = .lightGray

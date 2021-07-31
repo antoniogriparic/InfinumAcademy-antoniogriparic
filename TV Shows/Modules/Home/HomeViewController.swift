@@ -18,6 +18,7 @@ final class HomeViewController : UIViewController {
     
     private var showsResponse = ShowsResponse(shows: [])
     private var showService = ShowService()
+    private var userService = UserService()
     
     // MARK: - Lifecycle methods -
     
@@ -25,7 +26,9 @@ final class HomeViewController : UIViewController {
         
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
         fetchShows()
+        setUpNavigationBar()
         
     }
     
@@ -67,7 +70,40 @@ private extension HomeViewController {
         showDetailsViewController.show = show
         navigationController?.pushViewController(showDetailsViewController, animated: true)
     }
-        
+    
+    func setUpNavigationBar() {
+        let profileItem = UIBarButtonItem(
+            image: UIImage(named: "ic-profile"),
+            style: .plain,
+            target: self,
+            action: #selector(profileBarButtonHandler)
+        )
+        profileItem.tintColor = UIColor(red: 0.32, green: 0.21, blue: 0.55, alpha: 1)
+        navigationItem.rightBarButtonItem = profileItem
+    }
+    
+    @objc func profileBarButtonHandler() {
+        userService.getCurrentUser() { response in
+            switch response.result {
+            case .success(let userResponse):
+                self.navigateToProfileScreen(user: userResponse.user)
+            case .failure( _):
+                self.showAlter(title: "something went wrong!")
+            }
+        }
+    }
+    
+    func navigateToProfileScreen(user: User){
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let profileDetailsViewController = storyboard.instantiateViewController(
+            withIdentifier: "ProfileDetailsViewController")
+            as! ProfileDetailsViewController
+        profileDetailsViewController.user = user
+        let navigationController = UINavigationController(rootViewController:profileDetailsViewController)
+        present(navigationController, animated: true)
+    }
+    
+
 }
 
 
