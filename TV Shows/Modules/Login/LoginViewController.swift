@@ -37,9 +37,11 @@ final class LoginViewController : UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            super.viewDidAppear(animated)
-            navigationController?.setNavigationBarHidden(true, animated: animated)
-        }
+        super.viewDidAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    // MARK: - Actions
     
     // MARK: - Actions
   
@@ -86,15 +88,18 @@ final class LoginViewController : UIViewController {
         
         guard let email = usernameTextField.text, let password = passwordTextField.text else { return }
         
-        userService.loginUserWith(email: email, password: password) { [weak self] response in
-                switch response.result {
-                case .success(let userResponse):
-                    let headers = response.response?.headers.dictionary ?? [:]
-                    self?.handleSuccesfulLogin(user: userResponse.user, headers: headers)
-                case .failure(let error):
-                    print(error)
-                    SVProgressHUD.showError(withStatus: "Error")
-                }
+        userService.loginUserWith(email: email, password: password) {  [weak self] response in
+            
+            guard let self = self else {return}
+            
+            switch response.result {
+            case .success( _):
+                self.navigateToHomeScreen()
+                SVProgressHUD.showSuccess(withStatus: "Success")
+            case .failure( _):
+                SVProgressHUD.dismiss()
+                self.showAlter(title: "Login Error")
+            }
         }
     }
     
@@ -104,27 +109,20 @@ final class LoginViewController : UIViewController {
         
         guard let email = usernameTextField.text, let password = passwordTextField.text else { return }
         
-        userService.registerUserWith(email: email, password: password) { response in
+        userService.registerUserWith(email: email, password: password) { [weak self] response in
+            
+            guard let self = self else {return}
+            
             switch response.result {
             case .success( _):
-                self.userService.loginUserWith(email: email , password : password) { [weak self] response in
-                        switch response.result {
-                        case .success(let userResponse):
-                            let headers = response.response?.headers.dictionary ?? [:]
-                            self?.handleSuccesfulLogin(user: userResponse.user, headers: headers)
-                        case .failure(let error):
-                            print(error)
-                            SVProgressHUD.showError(withStatus: "Error")
-                        }
-                }
-                
-            case .failure(let error):
-                SVProgressHUD.showError(withStatus: "Error")
-                print("Registration Error : \(error)")
+                self.navigateToHomeScreen()
+                SVProgressHUD.showSuccess(withStatus: "Success")
+            case .failure( _):
+                SVProgressHUD.dismiss()
+                self.showAlter(title: "Registration Error")
             }
         }
     }
-    
     
 }
 
@@ -217,5 +215,19 @@ private extension LoginViewController {
         SVProgressHUD.showSuccess(withStatus: "Success")
     }
     
+    
+}
+
+
+extension UIViewController {
+    
+    func showAlter(title: String) {
+        let alertController = UIAlertController(title: title, message: "", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            alertController.dismiss(animated: true)
+        }
+        alertController.addAction(OKAction)
+        self.present(alertController, animated: true)
+    }
     
 }

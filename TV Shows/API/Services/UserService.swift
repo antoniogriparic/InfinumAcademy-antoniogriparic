@@ -7,7 +7,6 @@
 
 import Foundation
 import Alamofire
-import SVProgressHUD
 
 final class UserService {
     
@@ -16,20 +15,21 @@ final class UserService {
         AF
             .request(UserRouter.register(email: email, password: password))
             .validate()
-            .responseDecodable(of: UserResponse.self) { response in
-                completion(response)
+            .responseDecodable(of: UserResponse.self) { dataResponse in
+                SessionManager.shared.storeAuthInfo(headers: dataResponse.response?.headers.dictionary)
+                completion(dataResponse)
             }
     }
     
     func loginUserWith(email: String, password: String,completion: @escaping (DataResponse<UserResponse, AFError>) -> Void) {
-        
+                
         AF
             .request(UserRouter.login(email: email, password: password))
             .validate()
-            .responseDecodable(of: UserResponse.self) { response in
-                completion(response)
+            .responseDecodable(of: UserResponse.self) { dataResponse in
+                SessionManager.shared.storeAuthInfo(headers: dataResponse.response?.headers.dictionary)
+                completion(dataResponse)
             }
     }
-    
     
 }

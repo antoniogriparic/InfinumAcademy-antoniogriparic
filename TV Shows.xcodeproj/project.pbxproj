@@ -8,33 +8,55 @@
 
 /* Begin PBXBuildFile section */
 		2753418C14FF090C146AA7DA /* Pods_TV_Shows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B892B08D83706879453998 /* Pods_TV_Shows.framework */; };
+		4209422226B1493200E91B63 /* ShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4209422126B1493200E91B63 /* ShowDetailsViewController.swift */; };
 		42094798269C48C1004D0338 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42094797269C48C1004D0338 /* Login.storyboard */; };
 		4209479A269C48E2004D0338 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42094799269C48E2004D0338 /* LoginViewController.swift */; };
 		422B69B926A9C4D50066AE4B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422B69B826A9C4D50066AE4B /* User.swift */; };
 		422CD818269C696200BB860C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 422CD817269C696200BB860C /* Assets.xcassets */; };
+		4247A38126AEDBDC00EBE04B /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4247A38026AEDBDC00EBE04B /* SessionManager.swift */; };
+		4247A38326AEE62F00EBE04B /* ShowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4247A38226AEE62F00EBE04B /* ShowService.swift */; };
+		4247A38526AEE6FD00EBE04B /* ShowRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4247A38426AEE6FD00EBE04B /* ShowRouter.swift */; };
+		4247A38726AEF56600EBE04B /* TVShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4247A38626AEF56600EBE04B /* TVShowTableViewCell.swift */; };
 		42610F8B26975F450024A42A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42610F8A26975F450024A42A /* AppDelegate.swift */; };
 		42610F9726975F460024A42A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42610F9526975F460024A42A /* LaunchScreen.storyboard */; };
+		42626D7F26B19AA6009ADDE1 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42626D7E26B19AA6009ADDE1 /* Review.swift */; };
 		42756DB926AAE23500B08B03 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42756DB826AAE23500B08B03 /* UserService.swift */; };
 		42756DBB26AAE56600B08B03 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42756DBA26AAE56600B08B03 /* UserRouter.swift */; };
 		42756DBD26AAE9BE00B08B03 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42756DBC26AAE9BE00B08B03 /* Constants.swift */; };
+		4284AD7226ADAC5B00B23383 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4284AD7126ADAC5B00B23383 /* Show.swift */; };
+		42B5120226B16F1F006A8642 /* ShowDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B5120126B16F1F006A8642 /* ShowDetailsTableViewCell.swift */; };
+		42B5120426B17F25006A8642 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B5120326B17F25006A8642 /* RatingView.swift */; };
 		42EA68F226A9890F00D6A159 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA68F126A9890F00D6A159 /* HomeViewController.swift */; };
 		42EA68F426A9893400D6A159 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42EA68F326A9893400D6A159 /* Home.storyboard */; };
+		42EDA47326B1FD28009C92E4 /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EDA47226B1FD28009C92E4 /* WriteReviewViewController.swift */; };
+		42F4A14F26B1E51C00D160F4 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F4A14E26B1E51C00D160F4 /* ReviewTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4209422126B1493200E91B63 /* ShowDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewController.swift; sourceTree = "<group>"; };
 		42094797269C48C1004D0338 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		42094799269C48E2004D0338 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		422B69B826A9C4D50066AE4B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		422CD817269C696200BB860C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4247A38026AEDBDC00EBE04B /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		4247A38226AEE62F00EBE04B /* ShowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowService.swift; sourceTree = "<group>"; };
+		4247A38426AEE6FD00EBE04B /* ShowRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRouter.swift; sourceTree = "<group>"; };
+		4247A38626AEF56600EBE04B /* TVShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowTableViewCell.swift; sourceTree = "<group>"; };
 		42610F8726975F450024A42A /* TV Shows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Shows.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42610F8A26975F450024A42A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42610F9626975F460024A42A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42610F9826975F460024A42A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42626D7E26B19AA6009ADDE1 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		42756DB826AAE23500B08B03 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		42756DBA26AAE56600B08B03 /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
 		42756DBC26AAE9BE00B08B03 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4284AD7126ADAC5B00B23383 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
+		42B5120126B16F1F006A8642 /* ShowDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		42B5120326B17F25006A8642 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		42EA68F126A9890F00D6A159 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		42EA68F326A9893400D6A159 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		42EDA47226B1FD28009C92E4 /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
+		42F4A14E26B1E51C00D160F4 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		5149C8418CDA68615EA1529D /* Pods-TV Shows.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Shows.release.xcconfig"; path = "Target Support Files/Pods-TV Shows/Pods-TV Shows.release.xcconfig"; sourceTree = "<group>"; };
 		6AC80C1302B7AA73FD79BDD6 /* Pods-TV Shows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Shows.debug.xcconfig"; path = "Target Support Files/Pods-TV Shows/Pods-TV Shows.debug.xcconfig"; sourceTree = "<group>"; };
 		71B892B08D83706879453998 /* Pods_TV_Shows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV_Shows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +74,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4209422326B14BB600E91B63 /* ShowDetails */ = {
+			isa = PBXGroup;
+			children = (
+				42752BA926B2B5B200DB7B2E /* Cells */,
+				4209422126B1493200E91B63 /* ShowDetailsViewController.swift */,
+				42626D7E26B19AA6009ADDE1 /* Review.swift */,
+				42EDA47226B1FD28009C92E4 /* WriteReviewViewController.swift */,
+			);
+			path = ShowDetails;
+			sourceTree = "<group>";
+		};
 		42094796269C4888004D0338 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -83,17 +116,70 @@
 		42610F8926975F450024A42A /* TV Shows */ = {
 			isa = PBXGroup;
 			children = (
-				42EA68F026A988D800D6A159 /* Home */,
-				42094796269C4888004D0338 /* Login */,
-				42610F8A26975F450024A42A /* AppDelegate.swift */,
-				42610F9526975F460024A42A /* LaunchScreen.storyboard */,
-				422CD817269C696200BB860C /* Assets.xcassets */,
 				42610F9826975F460024A42A /* Info.plist */,
-				42756DB826AAE23500B08B03 /* UserService.swift */,
-				42756DBA26AAE56600B08B03 /* UserRouter.swift */,
-				42756DBC26AAE9BE00B08B03 /* Constants.swift */,
+				42610F8A26975F450024A42A /* AppDelegate.swift */,
+				4284AD6826AD6BAA00B23383 /* Modules */,
+				4284AD6726AD6B1600B23383 /* Assets */,
+				4284AD6626AD6AC200B23383 /* API */,
 			);
 			path = "TV Shows";
+			sourceTree = "<group>";
+		};
+		42752BA926B2B5B200DB7B2E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				42B5120126B16F1F006A8642 /* ShowDetailsTableViewCell.swift */,
+				42F4A14E26B1E51C00D160F4 /* ReviewTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4284AD6626AD6AC200B23383 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				42AFD5EC26B002D20023D09A /* Services */,
+				42AFD5EB26B002BA0023D09A /* Routers */,
+				42756DBC26AAE9BE00B08B03 /* Constants.swift */,
+				4247A38026AEDBDC00EBE04B /* SessionManager.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		4284AD6726AD6B1600B23383 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				42610F9526975F460024A42A /* LaunchScreen.storyboard */,
+				422CD817269C696200BB860C /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		4284AD6826AD6BAA00B23383 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				42094796269C4888004D0338 /* Login */,
+				4209422326B14BB600E91B63 /* ShowDetails */,
+				42EA68F026A988D800D6A159 /* Home */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		42AFD5EB26B002BA0023D09A /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				42756DBA26AAE56600B08B03 /* UserRouter.swift */,
+				4247A38426AEE6FD00EBE04B /* ShowRouter.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		42AFD5EC26B002D20023D09A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				42756DB826AAE23500B08B03 /* UserService.swift */,
+				4247A38226AEE62F00EBE04B /* ShowService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		42EA68F026A988D800D6A159 /* Home */ = {
@@ -101,6 +187,9 @@
 			children = (
 				42EA68F126A9890F00D6A159 /* HomeViewController.swift */,
 				42EA68F326A9893400D6A159 /* Home.storyboard */,
+				4284AD7126ADAC5B00B23383 /* Show.swift */,
+				4247A38626AEF56600EBE04B /* TVShowTableViewCell.swift */,
+				42B5120326B17F25006A8642 /* RatingView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -239,11 +328,22 @@
 			files = (
 				422B69B926A9C4D50066AE4B /* User.swift in Sources */,
 				42756DBB26AAE56600B08B03 /* UserRouter.swift in Sources */,
+				4247A38326AEE62F00EBE04B /* ShowService.swift in Sources */,
+				42B5120426B17F25006A8642 /* RatingView.swift in Sources */,
+				4209422226B1493200E91B63 /* ShowDetailsViewController.swift in Sources */,
+				4247A38526AEE6FD00EBE04B /* ShowRouter.swift in Sources */,
+				4247A38126AEDBDC00EBE04B /* SessionManager.swift in Sources */,
 				42756DB926AAE23500B08B03 /* UserService.swift in Sources */,
+				42B5120226B16F1F006A8642 /* ShowDetailsTableViewCell.swift in Sources */,
+				42626D7F26B19AA6009ADDE1 /* Review.swift in Sources */,
 				4209479A269C48E2004D0338 /* LoginViewController.swift in Sources */,
 				42756DBD26AAE9BE00B08B03 /* Constants.swift in Sources */,
 				42610F8B26975F450024A42A /* AppDelegate.swift in Sources */,
 				42EA68F226A9890F00D6A159 /* HomeViewController.swift in Sources */,
+				42EDA47326B1FD28009C92E4 /* WriteReviewViewController.swift in Sources */,
+				42F4A14F26B1E51C00D160F4 /* ReviewTableViewCell.swift in Sources */,
+				4247A38726AEF56600EBE04B /* TVShowTableViewCell.swift in Sources */,
+				4284AD7226ADAC5B00B23383 /* Show.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

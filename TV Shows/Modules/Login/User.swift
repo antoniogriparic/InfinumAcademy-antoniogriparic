@@ -26,6 +26,7 @@ struct User : Codable {
     }
 }
 
+
 struct AuthInfo: Codable {
 
     let accessToken: String
