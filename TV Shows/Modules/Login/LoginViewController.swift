@@ -25,6 +25,7 @@ final class LoginViewController : UIViewController {
     private var rememberMeButtonEnabled = false
     private var visibleButtonEnabled = false
     private var userService = UserService()
+
     
     // MARK: - Lifecycle methods -
     
@@ -32,7 +33,7 @@ final class LoginViewController : UIViewController {
         
         super.viewDidLoad()
         setupUI()
-        
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +43,10 @@ final class LoginViewController : UIViewController {
     
     // MARK: - Actions
     
+    // MARK: - Actions
+  
     @IBAction func usernameTextFieldHandler() {
+
         loginAndRegisterHandler()
     }
     
@@ -152,7 +156,6 @@ private extension LoginViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidHideNotification, object: nil)
-        navigationController?.isNavigationBarHidden = true
     }
     
     func isValidEmail(_ email: String) -> Bool {
@@ -163,6 +166,7 @@ private extension LoginViewController {
     }
     
     func loginAndRegisterHandler(){
+
         if usernameTextField.hasText && passwordTextField.hasText && isValidEmail(usernameTextField.text ?? "") {
             loginButton.isEnabled = true
             loginButton.alpha = 1.0
@@ -199,6 +203,16 @@ private extension LoginViewController {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         navigationController?.pushViewController(homeViewController, animated: true)
+    }
+    
+    func handleSuccesfulLogin(user: User, headers: [String: String]) {
+        guard let authInfo = try? AuthInfo(headers: headers) else {
+            SVProgressHUD.showError(withStatus: "Missing Headers")
+            return
+        }
+        print(authInfo)
+        navigateToHomeScreen()
+        SVProgressHUD.showSuccess(withStatus: "Success")
     }
     
     
