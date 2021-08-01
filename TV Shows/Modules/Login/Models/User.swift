@@ -17,7 +17,7 @@ struct User : Codable {
     
     let id : String
     let email : String
-    let imageUrl : String?
+    let imageUrl : URL?
     
     enum CodingKeys: String , CodingKey {
         case id

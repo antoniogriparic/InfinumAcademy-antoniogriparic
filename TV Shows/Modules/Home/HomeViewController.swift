@@ -34,8 +34,7 @@ final class HomeViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setViewControllers([self], animated: false)
-        navigationController?.isNavigationBarHidden = false
+        navigationController?.setNavigationBarHidden(false, animated: animated)
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -50,7 +49,7 @@ private extension HomeViewController {
         
         showService.fetchShows() { [weak self] response in
             
-            guard let self = self else {return}
+            guard let self = self else { return }
             
             SVProgressHUD.dismiss()
             
@@ -87,7 +86,7 @@ private extension HomeViewController {
             switch response.result {
             case .success(let userResponse):
                 self.navigateToProfileScreen(user: userResponse.user)
-            case .failure( _):
+            case .failure:
                 self.showAlter(title: "something went wrong!")
             }
         }

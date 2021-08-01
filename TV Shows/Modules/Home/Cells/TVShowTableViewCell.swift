@@ -20,9 +20,8 @@ class TVShowTableViewCell: UITableViewCell {
     func configure(with show: Show) {
         showNameLabel.text = show.title
         if let showImageUrl = show.imageUrl {
-            let url = URL(string: showImageUrl)
             let placeholder = UIImage(named: "ic-show-placeholder-vertical")
-            showImage.kf.setImage(with: url, placeholder: placeholder)
+            showImage.kf.setImage(with: showImageUrl, placeholder: placeholder)
         }
     }
 

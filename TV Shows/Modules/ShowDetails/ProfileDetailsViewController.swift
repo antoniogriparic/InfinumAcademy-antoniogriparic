@@ -44,14 +44,13 @@ final class ProfileDetailsViewController: UIViewController {
         )
         navigationItem.title = "My Account"
         
-        guard let userUnwrapped = user else { showAlter(title: "something went wrong!") ; return }
+        guard let user = user else { showAlter(title: "something went wrong!") ; return }
         
-        emailLabel.text = userUnwrapped.email
+        emailLabel.text = user.email
         
-        if let userImage = userUnwrapped.imageUrl {
-            let url = URL(string: userImage)
+        if let userImageUrl = user.imageUrl {
             let placeholder = UIImage(named: "ic-profile-placeholder")
-            profilePhoto.kf.setImage(with: url, placeholder: placeholder)
+            profilePhoto.kf.setImage(with: userImageUrl, placeholder: placeholder)
         }
     }
     

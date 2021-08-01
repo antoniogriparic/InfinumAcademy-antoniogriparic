@@ -53,17 +53,17 @@ enum UserRouter : URLRequestConvertible {
     }
     
     func asURLRequest() throws -> URLRequest {
+        let headers = SessionManager.shared.authInfo?.headers ?? [:]
+        var urlRequest = try URLRequest(url: Constants.API.baseURL + path, method: method , headers: HTTPHeaders(headers))
+        
         switch self {
         case .login, .register:
-            let headers = SessionManager.shared.authInfo?.headers ?? [:]
-            var urlRequest = try URLRequest(url: Constants.API.baseURL + path, method: method , headers: HTTPHeaders(headers))
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
-            return urlRequest
         case .user:
-            let headers = SessionManager.shared.authInfo?.headers ?? [:]
-            let urlRequest = try URLRequest(url: Constants.API.baseURL + path, method: method , headers: HTTPHeaders(headers))
-            return urlRequest
+            break
         }
+        
+        return urlRequest
     }
     
 }

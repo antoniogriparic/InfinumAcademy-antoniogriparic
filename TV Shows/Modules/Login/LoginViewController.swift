@@ -86,10 +86,10 @@ final class LoginViewController : UIViewController {
         
         userService.loginUserWith(email: email, password: password) {  [weak self] response in
             
-            guard let self = self else {return}
+            guard let self = self else { return }
             
             switch response.result {
-            case .success( _):
+            case .success:
                 if self.rememberMeButtonEnabled {
                     if let authInfo = SessionManager.shared.authInfo {
                         KeychainManager.addAuthInfo(authInfo: authInfo)
@@ -97,7 +97,7 @@ final class LoginViewController : UIViewController {
                 }
                 self.navigateToHomeScreen()
                 SVProgressHUD.showSuccess(withStatus: "Success")
-            case .failure( _):
+            case .failure:
                 SVProgressHUD.dismiss()
                 self.shakeLoginButtonAnimation()
                 self.showAlter(title: "Username or Password incorrect. Try again.")
@@ -113,10 +113,10 @@ final class LoginViewController : UIViewController {
         
         userService.registerUserWith(email: email, password: password) { [weak self] response in
             
-            guard let self = self else {return}
+            guard let self = self else { return }
             
             switch response.result {
-            case .success( _):
+            case .success:
                 if self.rememberMeButtonEnabled {
                     if let authInfo = SessionManager.shared.authInfo {
                         KeychainManager.addAuthInfo(authInfo: authInfo)
@@ -124,7 +124,7 @@ final class LoginViewController : UIViewController {
                 }
                 self.navigateToHomeScreen()
                 SVProgressHUD.showSuccess(withStatus: "Success")
-            case .failure( _):
+            case .failure:
                 SVProgressHUD.dismiss()
                 self.showAlter(title: "Registration Error")
             }
@@ -243,22 +243,7 @@ private extension LoginViewController {
     func navigateToHomeScreen() {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        navigationController?.pushViewController(homeViewController, animated: true)
-    }
-    
-    
-}
-
-
-extension UIViewController {
-    
-    func showAlter(title: String) {
-        let alertController = UIAlertController(title: title, message: "", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            alertController.dismiss(animated: true)
-        }
-        alertController.addAction(OKAction)
-        self.present(alertController, animated: true)
+        navigationController?.setViewControllers([homeViewController], animated: true)
     }
     
 }

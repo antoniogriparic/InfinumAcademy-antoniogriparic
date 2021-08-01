@@ -53,31 +53,22 @@ enum ShowRouter : URLRequestConvertible {
     }
     
     func asURLRequest() throws -> URLRequest {
+        let headers = SessionManager.shared.authInfo?.headers ?? [:]
+        var urlRequest = try URLRequest(
+            url: Constants.API.baseURL + path,
+            method: method ,
+            headers: HTTPHeaders(headers))
+        
         switch self {
         case .shows:
-            let headers = SessionManager.shared.authInfo?.headers ?? [:]
-            var urlRequest = try URLRequest(
-                url: Constants.API.baseURL + path,
-                method: method ,
-                headers: HTTPHeaders(headers))
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
-            return urlRequest
-        case .listReviews:
-            let headers = SessionManager.shared.authInfo?.headers ?? [:]
-            let urlRequest = try URLRequest(
-                url: Constants.API.baseURL + path,
-                method: method ,
-                headers: HTTPHeaders(headers))
-            return urlRequest
         case .publishReview:
-            let headers = SessionManager.shared.authInfo?.headers ?? [:]
-            var urlRequest = try URLRequest(
-                url: Constants.API.baseURL + path,
-                method: method ,
-                headers: HTTPHeaders(headers))
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
-            return urlRequest
+        case .listReviews:
+            break
         }
+        
+        return urlRequest
     }
     
 }

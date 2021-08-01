@@ -25,6 +25,7 @@ class ReviewTableViewCell: UITableViewCell {
         profileImage.layer.cornerRadius = profileImage.bounds.width / 2
         ratingView.isEnabled = false
         ratingView.configure(withStyle: .small)
+        self.selectionStyle = .none
     }
     
     // MARK: - Private Functions
@@ -33,10 +34,9 @@ class ReviewTableViewCell: UITableViewCell {
         emailLabel.text = review.user.email
         commentLabel.text = review.comment
         ratingView.setRoundedRating(Double(review.rating))
-        if let userImage = review.user.imageUrl {
-            let url = URL(string: userImage)
+        if let userImageUrl = review.user.imageUrl {
             let placeholder = UIImage(named: "ic-profile-placeholder")
-            profileImage.kf.setImage(with: url, placeholder: placeholder)
+            profileImage.kf.setImage(with: userImageUrl, placeholder: placeholder)
         }
     }
 

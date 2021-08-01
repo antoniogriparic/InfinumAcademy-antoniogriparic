@@ -22,31 +22,31 @@ class ShowDetailsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         ratingView.isEnabled = false
+        self.selectionStyle = .none
     }
     
     // MARK: - Private Functions
     
     func configure(show: Show?) {
         
-        guard let showUnwrapped = show else { return }
+        guard let show = show else { return }
         
-        descriptionLabel.text = showUnwrapped.description
+        descriptionLabel.text = show.description
         
-        if showUnwrapped.noOfReviews == 0 {
+        if show.noOfReviews == 0 {
             ratingView.isHidden = true
             numberOfReviewsLabel.text = "No reviews yet."
         }
         else {
-            let avgRating = showUnwrapped.averageRating ?? 0
+            let avgRating = show.averageRating ?? 0
             numberOfReviewsLabel.text =
-                "\(showUnwrapped.noOfReviews) REVIEWS, \(avgRating) AVERAGE"
+                "\(show.noOfReviews) REVIEWS, \(avgRating) AVERAGE"
             ratingView.setRoundedRating(avgRating)
         }
         
-        if let showImageUrl = showUnwrapped.imageUrl {
-            let url = URL(string: showImageUrl)
+        if let showImageUrl = show.imageUrl {
             let placeholder = UIImage(named: "ic-show-placeholder-rectangle")
-            showImage.kf.setImage(with: url, placeholder: placeholder)
+            showImage.kf.setImage(with: showImageUrl, placeholder: placeholder)
         }
     }
 
