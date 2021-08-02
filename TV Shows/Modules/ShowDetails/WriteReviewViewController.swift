@@ -54,7 +54,9 @@ class WriteReviewViewController: UIViewController {
         }
     }
     
-    // MARK: - Private Functions
+}
+
+private extension WriteReviewViewController {
     
     @objc private func didSelectClose() {
         dismiss(animated: true, completion: nil)
@@ -73,8 +75,9 @@ class WriteReviewViewController: UIViewController {
         commentTextView.textColor = .lightGray
         submitButton.layer.cornerRadius = 21.5
     }
-    
 }
+
+// MARK: - Text View Delegate
 
 extension WriteReviewViewController: UITextViewDelegate {
     

@@ -25,7 +25,7 @@ class ShowDetailsTableViewCell: UITableViewCell {
         self.selectionStyle = .none
     }
     
-    // MARK: - Private Functions
+    // MARK: - Configure Function
     
     func configure(show: Show?) {
         

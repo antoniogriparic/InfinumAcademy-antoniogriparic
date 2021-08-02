@@ -10,12 +10,14 @@ import UIKit
 final class MyTabViewController: UITabBarController {
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
 
         let showsViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         showsViewController.usingTopRated = false
+        
         let topRatedViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         topRatedViewController.usingTopRated = true
         

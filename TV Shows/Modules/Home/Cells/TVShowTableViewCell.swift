@@ -10,13 +10,19 @@ import Kingfisher
 
 class TVShowTableViewCell: UITableViewCell {
     
+    // MARK: - Outlets
+    
     @IBOutlet private var showNameLabel: UILabel!
     @IBOutlet private var showImage: UIImageView!
 
+    // MARK: - Lifecycle Methods -
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
+    // MARK: - Configure function
+    
     func configure(with show: Show) {
         showNameLabel.text = show.title
         if let showImageUrl = show.imageUrl {

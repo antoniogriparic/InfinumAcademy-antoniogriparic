@@ -12,20 +12,28 @@ let NotificationDidLogout = Notification.Name(rawValue: "NotificationDidLogout")
 
 final class ProfileDetailsViewController: UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet private weak var emailLabel: UILabel!
     @IBOutlet private weak var profilePhoto: UIImageView!
     @IBOutlet private weak var changeProfilePhotoButton: UIButton!
     @IBOutlet private weak var logoutButton: UIButton!
     
+    // MARK: - Properties
+    
     var user: User?
     private let imagePicker = UIImagePickerController()
     private let userService = UserService()
+    
+    // MARK: - Lifecycle Methods -
 
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
         setupUI()
     }
+    
+    // MARK: - Actions
     
     @IBAction func changeProfilePhotoButtonHandler() {
         imagePicker.allowsEditing = false
@@ -42,6 +50,10 @@ final class ProfileDetailsViewController: UIViewController {
             NotificationCenter.default.post(notification)
         }
     }
+    
+}
+
+private extension ProfileDetailsViewController {
     
     func setupUI() {
         
@@ -71,8 +83,9 @@ final class ProfileDetailsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
 }
+
+// MARK: - Image Picker Delegate
 
 extension ProfileDetailsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         

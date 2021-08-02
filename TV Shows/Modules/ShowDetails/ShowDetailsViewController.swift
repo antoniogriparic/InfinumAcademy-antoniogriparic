@@ -44,7 +44,7 @@ class ShowDetailsViewController: UIViewController {
 private extension ShowDetailsViewController {
 
     private func fetchReviews() {
-        guard let show = show else { return }
+        guard let show = show else { return } 
         showService.fetchReviewsList(showId: show.id) { [weak self] response in
                
             guard let self = self else { return }
@@ -68,6 +68,7 @@ private extension ShowDetailsViewController {
         fetchReviews()
         newReviewButton.layer.cornerRadius = 21.5
         refreshControl.addTarget(self, action: #selector(refreshReviews(_:)), for: .valueChanged)
+        tabBarController?.tabBar.isHidden = true
     }
    
     @objc private func refreshReviews(_ sender: Any) {
@@ -76,6 +77,7 @@ private extension ShowDetailsViewController {
 
 }
 
+// MARK: - Table View Data Source
 
 extension ShowDetailsViewController: UITableViewDataSource {
     
@@ -102,6 +104,7 @@ extension ShowDetailsViewController: UITableViewDataSource {
     
 }
 
+// MARK: - Table View Delegate
 
 extension ShowDetailsViewController: UITableViewDelegate {
     
@@ -111,6 +114,7 @@ extension ShowDetailsViewController: UITableViewDelegate {
     
 }
 
+// MARK: - Write Review ViewController Delegate
 
 extension ShowDetailsViewController: WriteReviewViewControllerDelegate {
     

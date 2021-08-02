@@ -28,19 +28,19 @@ final class HomeViewController : UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
-        fetchShows()
-        fetchTopRated()
-        setUpNavigationBar()
-        setUpLogOutNotification()
+        setupUI()
         
+    }
+    
+    deinit {
+        print("deinit HOME VC")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
         navigationController?.navigationBar.prefersLargeTitles = true
+        tabBarController?.tabBar.isHidden = false
     }
     
 }
@@ -121,7 +121,7 @@ private extension HomeViewController {
             withIdentifier: "ProfileDetailsViewController")
             as! ProfileDetailsViewController
         profileDetailsViewController.user = user
-        let navigationController = UINavigationController(rootViewController:profileDetailsViewController)
+        let navigationController = UINavigationController(rootViewController: profileDetailsViewController)
         present(navigationController, animated: true)
     }
     
@@ -135,15 +135,23 @@ private extension HomeViewController {
                 using: { _ in
                     let storyboard = UIStoryboard(name: "Login", bundle: nil)
                     let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                    self.navigationController?.navigationController?
-                        .setViewControllers([loginViewController], animated: true)
+                    self.navigationController?.navigationController?.setViewControllers([loginViewController], animated: true)
                 }
             )
     }
     
-
+    func setupUI() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        fetchShows()
+        fetchTopRated()
+        setUpNavigationBar()
+        setUpLogOutNotification()
+    }
+    
 }
 
+// MARK: - Table View Data Source
 
 extension HomeViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -167,6 +175,7 @@ extension HomeViewController : UITableViewDataSource {
     
 }
 
+// MARK: - Table View Delegate
 
 extension HomeViewController : UITableViewDelegate {
     

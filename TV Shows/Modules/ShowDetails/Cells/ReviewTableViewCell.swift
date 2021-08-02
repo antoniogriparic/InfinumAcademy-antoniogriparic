@@ -28,7 +28,7 @@ class ReviewTableViewCell: UITableViewCell {
         self.selectionStyle = .none
     }
     
-    // MARK: - Private Functions
+    // MARK: - Configure Function
     
     func configure(review: Review) {
         emailLabel.text = review.user.email
