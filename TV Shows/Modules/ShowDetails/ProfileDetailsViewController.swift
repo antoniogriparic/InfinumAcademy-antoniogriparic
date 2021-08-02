@@ -8,6 +8,8 @@
 import UIKit
 import Kingfisher
 
+let NotificationDidLogout = Notification.Name(rawValue: "NotificationDidLogout")
+
 final class ProfileDetailsViewController: UIViewController {
     
     @IBOutlet private weak var emailLabel: UILabel!
@@ -16,18 +18,29 @@ final class ProfileDetailsViewController: UIViewController {
     @IBOutlet private weak var logoutButton: UIButton!
     
     var user: User?
+    private let imagePicker = UIImagePickerController()
+    private let userService = UserService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker.delegate = self
         setupUI()
     }
     
     @IBAction func changeProfilePhotoButtonHandler() {
-        
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+                
+        present(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func logoutButtonHandler() {
-        
+        dismiss(animated: true) {
+            KeychainManager.removeUserInfo()
+            SessionManager.shared.authInfo = nil
+            let notification = Notification(name: NotificationDidLogout)
+            NotificationCenter.default.post(notification)
+        }
     }
     
     func setupUI() {
@@ -55,6 +68,33 @@ final class ProfileDetailsViewController: UIViewController {
     }
     
     @objc private func didSelectClose() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+}
+
+extension ProfileDetailsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            profilePhoto.contentMode = .scaleAspectFit
+            profilePhoto.image = pickedImage
+            userService.storeImage(pickedImage) { dataResponse in
+                switch dataResponse.result{
+                case .success:
+                    break
+                case .failure(let error):
+                    print(error)
+                    self.showAlter(title: "Failed to upload profile photo!")
+                }
+            }
+        }
+            
+        dismiss(animated: true, completion: nil)
+    }
+        
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     

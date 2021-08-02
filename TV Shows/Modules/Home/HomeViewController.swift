@@ -17,8 +17,11 @@ final class HomeViewController : UIViewController {
     // MARK: - Properties
     
     private var showsResponse = ShowsResponse(shows: [])
+    private var topRatedResponse = ShowsResponse(shows: [])
     private var showService = ShowService()
     private var userService = UserService()
+    var notificationToken: NSObjectProtocol?
+    var usingTopRated = false
     
     // MARK: - Lifecycle methods -
     
@@ -28,7 +31,9 @@ final class HomeViewController : UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         fetchShows()
+        fetchTopRated()
         setUpNavigationBar()
+        setUpLogOutNotification()
         
     }
     
@@ -59,6 +64,24 @@ private extension HomeViewController {
                 self.tableView.reloadData()
             case .failure(let error):
                 print("Error fetching shows! \(error)")
+            }
+        }
+    }
+    
+    func fetchTopRated() {
+        SVProgressHUD.show()
+        
+        showService.fetchTopRated() { [weak self] response in
+            
+            guard let self = self else { return }
+            
+            SVProgressHUD.dismiss()
+            
+            switch response.result {
+            case .success(let showsResponse):
+                self.topRatedResponse = showsResponse
+            case .failure(let error):
+                print("Error fetching top rated! \(error)")
             }
         }
     }
@@ -102,18 +125,43 @@ private extension HomeViewController {
         present(navigationController, animated: true)
     }
     
+    func setUpLogOutNotification() {
+        notificationToken = NotificationCenter
+            .default
+            .addObserver(
+                forName: NotificationDidLogout,
+                object: nil,
+                queue: nil,
+                using: { _ in
+                    let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                    let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                    self.navigationController?.navigationController?
+                        .setViewControllers([loginViewController], animated: true)
+                }
+            )
+    }
+    
 
 }
 
 
 extension HomeViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return showsResponse.shows.count
+        if usingTopRated {
+            return topRatedResponse.shows.count
+        } else {
+            return showsResponse.shows.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TVShowTableViewCell.self), for: indexPath) as! TVShowTableViewCell
-        cell.configure(with: showsResponse.shows[indexPath.row])
+        if usingTopRated {
+            cell.configure(with: topRatedResponse.shows[indexPath.row])
+        } else {
+            cell.configure(with: showsResponse.shows[indexPath.row])
+        }
         return cell
     }
     
@@ -124,7 +172,11 @@ extension HomeViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        navigateToShowDetails(show: showsResponse.shows[indexPath.row])
+        if usingTopRated {
+            navigateToShowDetails(show: topRatedResponse.shows[indexPath.row])
+        } else {
+            navigateToShowDetails(show: showsResponse.shows[indexPath.row])
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

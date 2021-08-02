@@ -13,6 +13,7 @@ enum ShowRouter : URLRequestConvertible {
     case shows
     case listReviews(showId: String)
     case publishReview(showId: String, rating: String, comment: String)
+    case topRated
     
     var path: String {
         switch self {
@@ -22,12 +23,14 @@ enum ShowRouter : URLRequestConvertible {
             return "/shows/" + showId + "/reviews"
         case .publishReview:
             return "/reviews"
+        case .topRated:
+            return "/shows/top_rated"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .shows, .listReviews(_ ):
+        case .shows, .listReviews, .topRated:
             return .get
         case .publishReview:
             return .post
@@ -36,7 +39,7 @@ enum ShowRouter : URLRequestConvertible {
     
     var parameters: [String: String] {
         switch self {
-        case .shows:
+        case .shows, .topRated:
             return [
                 "page": "1",
                 "items": "100"
@@ -60,7 +63,7 @@ enum ShowRouter : URLRequestConvertible {
             headers: HTTPHeaders(headers))
         
         switch self {
-        case .shows:
+        case .shows, .topRated:
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
         case .publishReview:
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)

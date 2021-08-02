@@ -24,7 +24,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="600"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="center" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="l66-lS-7Hl" userLabel="LogoContainer">
-                                                <rect key="frame" x="133" y="120" width="162" height="38"/>
+                                                <rect key="frame" x="133" y="76" width="162" height="38"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="Bu5-I7-oI8">
                                                         <rect key="frame" x="0.0" y="0.0" width="162" height="38"/>
@@ -32,7 +32,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ekm-qA-ViU" userLabel="LoginLabelContainer">
-                                                <rect key="frame" x="20" y="188" width="288" height="81"/>
+                                                <rect key="frame" x="20" y="144" width="288" height="81"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQs-nc-YLa">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="40.666666666666664"/>
@@ -49,7 +49,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Xqx-ru-EwU" userLabel="UserImputContainer">
-                                                <rect key="frame" x="20" y="314" width="388" height="99"/>
+                                                <rect key="frame" x="20" y="270" width="388" height="99"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="HQ1-6m-sJp" userLabel="EmailContainer">
                                                         <rect key="frame" x="0.0" y="0.0" width="388" height="36"/>
@@ -113,7 +113,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ao-MC-Mo4">
-                                                <rect key="frame" x="27" y="431" width="351" height="24"/>
+                                                <rect key="frame" x="27" y="387" width="351" height="24"/>
                                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Remember me" image="ic-checkbox-unselected"/>
                                                 <state key="selected" title="Remember me" image="ic-checkbox-selected"/>
@@ -122,7 +122,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAL-0h-RDa">
-                                                <rect key="frame" x="20" y="485" width="388" height="45"/>
+                                                <rect key="frame" x="20" y="441" width="388" height="45"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="dC0-HA-hX6"/>
@@ -139,7 +139,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU7-9F-hp9">
-                                                <rect key="frame" x="159.66666666666666" y="550" width="108.99999999999997" height="20"/>
+                                                <rect key="frame" x="159.66666666666666" y="506" width="108.99999999999997" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="109" id="Hwq-By-8n2"/>
                                                     <constraint firstAttribute="height" constant="20" id="mWA-Ag-z7C"/>
@@ -165,7 +165,7 @@
                                             <constraint firstItem="gU7-9F-hp9" firstAttribute="centerX" secondItem="Zqy-Rq-VVk" secondAttribute="centerX" id="HBj-o3-urt"/>
                                             <constraint firstItem="4ao-MC-Mo4" firstAttribute="top" secondItem="Xqx-ru-EwU" secondAttribute="bottom" constant="18" id="KMn-d5-UPG"/>
                                             <constraint firstAttribute="trailing" secondItem="pAL-0h-RDa" secondAttribute="trailing" constant="20" id="Liv-sL-Z2o"/>
-                                            <constraint firstItem="l66-lS-7Hl" firstAttribute="top" secondItem="Zqy-Rq-VVk" secondAttribute="top" constant="120" id="QO2-VZ-Xlw"/>
+                                            <constraint firstItem="l66-lS-7Hl" firstAttribute="top" secondItem="Zqy-Rq-VVk" secondAttribute="top" constant="76" id="QO2-VZ-Xlw"/>
                                             <constraint firstItem="Ekm-qA-ViU" firstAttribute="top" secondItem="l66-lS-7Hl" secondAttribute="bottom" constant="30" id="cBk-qK-PIi"/>
                                             <constraint firstItem="Xqx-ru-EwU" firstAttribute="leading" secondItem="Zqy-Rq-VVk" secondAttribute="leading" constant="20" id="dBh-bn-goW"/>
                                             <constraint firstAttribute="trailing" secondItem="Xqx-ru-EwU" secondAttribute="trailing" constant="20" id="dVZ-YW-F1a"/>

@@ -241,9 +241,8 @@ private extension LoginViewController {
     }
     
     func navigateToHomeScreen() {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        navigationController?.setViewControllers([homeViewController], animated: true)
+        let tabBarController = MyTabViewController()
+        navigationController?.setViewControllers([tabBarController], animated: true)
     }
     
 }

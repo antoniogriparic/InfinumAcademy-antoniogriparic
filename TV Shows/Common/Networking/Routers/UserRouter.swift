@@ -13,12 +13,13 @@ enum UserRouter : URLRequestConvertible {
     case login(email: String, password: String)
     case register(email: String, password: String)
     case user
+    case uploadImage
     
     var path : String {
         switch self {
         case .login:
             return "/users/sign_in"
-        case .register:
+        case .register, .uploadImage:
             return "/users"
         case .user:
             return "/users/me"
@@ -31,6 +32,8 @@ enum UserRouter : URLRequestConvertible {
             return .post
         case .user:
             return .get
+        case .uploadImage:
+            return .put
         }
     }
     
@@ -47,7 +50,7 @@ enum UserRouter : URLRequestConvertible {
                 "password" : password,
                 "password_confirmation" : password
             ]
-        case .user:
+        case .user, .uploadImage:
             return ["":""]
         }
     }
@@ -59,6 +62,8 @@ enum UserRouter : URLRequestConvertible {
         switch self {
         case .login, .register:
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
+        case .uploadImage:
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
         case .user:
             break
         }

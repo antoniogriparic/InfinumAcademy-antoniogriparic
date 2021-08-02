@@ -18,9 +18,9 @@ import UIKit
         SessionManager.shared.authInfo = authInfo
 
         if authInfo != nil {
-            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-            navigationController.viewControllers = [homeViewController]
+            let tabBarController = MyTabViewController()
+            navigationController.setNavigationBarHidden(true, animated: true)
+            navigationController.setViewControllers([tabBarController], animated: true)
         } else {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController

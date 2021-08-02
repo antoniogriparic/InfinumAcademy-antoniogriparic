@@ -40,4 +40,14 @@ final class ShowService {
             }
     }
     
+    func fetchTopRated(completion: @escaping (DataResponse<ShowsResponse, AFError>) -> Void) {
+        
+        AF
+            .request(ShowRouter.topRated)
+            .validate()
+            .responseDecodable(of: ShowsResponse.self) { dataResponse in
+                completion(dataResponse)
+            }
+    }
+    
 }
