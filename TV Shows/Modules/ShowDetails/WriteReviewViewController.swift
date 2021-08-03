@@ -35,16 +35,16 @@ class WriteReviewViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func submitButtonHandler() {
-        guard commentTextView.hasText && ratingView.rating > 0 , let unwrapedShow = show else { return }
+        guard commentTextView.hasText && ratingView.rating > 0 , let show = show else { return }
         showService.publishReview(
-            showId: unwrapedShow.id,
+            showId: show.id,
             rating: String(ratingView.rating),
             comment: commentTextView.text) { [weak self] response in
             
-            guard let self = self else {return}
+            guard let self = self else { return }
             
             switch response.result {
-            case .success( _):
+            case .success:
                 self.dismiss(animated: true, completion: nil)
                 self.delegate?.reviewDidPublish()
             case .failure(let error):
@@ -54,7 +54,9 @@ class WriteReviewViewController: UIViewController {
         }
     }
     
-    // MARK: - Private Functions
+}
+
+private extension WriteReviewViewController {
     
     @objc private func didSelectClose() {
         dismiss(animated: true, completion: nil)
@@ -67,13 +69,15 @@ class WriteReviewViewController: UIViewController {
             target: self,
             action: #selector(didSelectClose)
         )
+        navigationItem.title = "Write a Review"
         
         commentTextView.text = "Enter your comment here..."
         commentTextView.textColor = .lightGray
         submitButton.layer.cornerRadius = 21.5
     }
-    
 }
+
+// MARK: - Text View Delegate
 
 extension WriteReviewViewController: UITextViewDelegate {
     

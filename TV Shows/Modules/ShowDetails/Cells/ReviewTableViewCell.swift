@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ReviewTableViewCell: UITableViewCell {
     
@@ -24,14 +25,19 @@ class ReviewTableViewCell: UITableViewCell {
         profileImage.layer.cornerRadius = profileImage.bounds.width / 2
         ratingView.isEnabled = false
         ratingView.configure(withStyle: .small)
+        self.selectionStyle = .none
     }
     
-    // MARK: - Private Functions
+    // MARK: - Configure Function
     
-    func configure(email: String, comment: String, rating: Int) {
-        emailLabel.text = email
-        commentLabel.text = comment
-        ratingView.setRoundedRating(Double(rating))
+    func configure(review: Review) {
+        emailLabel.text = review.user.email
+        commentLabel.text = review.comment
+        ratingView.setRoundedRating(Double(review.rating))
+        if let userImageUrl = review.user.imageUrl {
+            let placeholder = UIImage(named: "ic-profile-placeholder")
+            profileImage.kf.setImage(with: userImageUrl, placeholder: placeholder)
+        }
     }
 
 }

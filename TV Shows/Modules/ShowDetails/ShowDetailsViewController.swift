@@ -17,8 +17,9 @@ class ShowDetailsViewController: UIViewController {
     // MARK: - Properties
    
     var show: Show? = nil
-    private var showService = ShowService()
+    private let showService = ShowService()
     private var reviewResponse = ReviewResponse(reviews: [])
+    private let refreshControl = UIRefreshControl()
     
     // MARK: - Lifecycle methods -
     
@@ -38,33 +39,45 @@ class ShowDetailsViewController: UIViewController {
         present(navigationController, animated: true)
     }
     
-    // MARK: - Private Functions
-    
-     private func fetchReviews() {
-        guard let unwrapedShow = show else {return}
-        showService.fetchReviewsList(showId: unwrapedShow.id) { [weak self] response in
-                
-                guard let self = self else {return}
-                
-                switch response.result {
-                case .success(let reviewResponse):
-                    self.reviewResponse = reviewResponse
-                    self.tableView.reloadData()
-                case .failure(let error):
-                    print("Error fetching reviews! \(error)")
-                }
+}
+
+private extension ShowDetailsViewController {
+
+    private func fetchReviews() {
+        guard let show = show else { return } 
+        showService.fetchReviewsList(showId: show.id) { [weak self] response in
+               
+            guard let self = self else { return }
+        
+            switch response.result {
+            case .success(let reviewResponse):
+                self.reviewResponse = reviewResponse
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            case .failure(let error):
+                print("Error fetching reviews! \(error)")
+            }
         }
     }
-    
+   
     private func setUpUI() {
         self.title = show?.title
         tableView.dataSource = self
+        tableView.delegate = self
+        tableView.refreshControl = refreshControl
         fetchReviews()
         newReviewButton.layer.cornerRadius = 21.5
+        refreshControl.addTarget(self, action: #selector(refreshReviews(_:)), for: .valueChanged)
+        tabBarController?.tabBar.isHidden = true
+    }
+   
+    @objc private func refreshReviews(_ sender: Any) {
+        fetchReviews()
     }
 
 }
 
+// MARK: - Table View Data Source
 
 extension ShowDetailsViewController: UITableViewDataSource {
     
@@ -78,47 +91,35 @@ extension ShowDetailsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: ShowDetailsTableViewCell.self),
                 for: indexPath) as! ShowDetailsTableViewCell
-            cell.configure(description: show?.description ?? "nesto",
-                           numberOfReviews: show?.noOfReviews ?? 0,
-                           averageRating: show?.averageRating ?? 0)
+            cell.configure(show: show)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing : ReviewTableViewCell.self),
                 for: indexPath) as! ReviewTableViewCell
-            cell.configure(email: reviewResponse.reviews[indexPath.row - 1].user.email,
-                           comment: reviewResponse.reviews[indexPath.row - 1].comment,
-                           rating: reviewResponse.reviews[indexPath.row - 1].rating)
+            cell.configure(review: reviewResponse.reviews[indexPath.row - 1])
             return cell
         }
     }
     
-    
 }
 
+// MARK: - Table View Delegate
 
 extension ShowDetailsViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        if indexPath.row == 0 {
-            return 650
-        }
-        else {
-            return 140
-        }
+        return UITableView.automaticDimension
     }
     
 }
+
+// MARK: - Write Review ViewController Delegate
 
 extension ShowDetailsViewController: WriteReviewViewControllerDelegate {
     
     func reviewDidPublish() {
-        self.fetchReviews()
+        fetchReviews()
     }
     
 }

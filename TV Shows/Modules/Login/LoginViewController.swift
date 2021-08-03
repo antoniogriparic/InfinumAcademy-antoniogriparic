@@ -25,7 +25,6 @@ final class LoginViewController : UIViewController {
     private var rememberMeButtonEnabled = false
     private var visibleButtonEnabled = false
     private var userService = UserService()
-
     
     // MARK: - Lifecycle methods -
     
@@ -42,11 +41,8 @@ final class LoginViewController : UIViewController {
     }
     
     // MARK: - Actions
-    
-    // MARK: - Actions
   
     @IBAction func usernameTextFieldHandler() {
-
         loginAndRegisterHandler()
     }
     
@@ -90,15 +86,21 @@ final class LoginViewController : UIViewController {
         
         userService.loginUserWith(email: email, password: password) {  [weak self] response in
             
-            guard let self = self else {return}
+            guard let self = self else { return }
             
             switch response.result {
-            case .success( _):
+            case .success:
+                if self.rememberMeButtonEnabled {
+                    if let authInfo = SessionManager.shared.authInfo {
+                        KeychainManager.addAuthInfo(authInfo: authInfo)
+                    }
+                }
                 self.navigateToHomeScreen()
                 SVProgressHUD.showSuccess(withStatus: "Success")
-            case .failure( _):
+            case .failure:
                 SVProgressHUD.dismiss()
-                self.showAlter(title: "Login Error")
+                self.shakeLoginButtonAnimation()
+                self.showAlter(title: "Username or Password incorrect. Try again.")
             }
         }
     }
@@ -111,13 +113,18 @@ final class LoginViewController : UIViewController {
         
         userService.registerUserWith(email: email, password: password) { [weak self] response in
             
-            guard let self = self else {return}
+            guard let self = self else { return }
             
             switch response.result {
-            case .success( _):
+            case .success:
+                if self.rememberMeButtonEnabled {
+                    if let authInfo = SessionManager.shared.authInfo {
+                        KeychainManager.addAuthInfo(authInfo: authInfo)
+                    }
+                }
                 self.navigateToHomeScreen()
                 SVProgressHUD.showSuccess(withStatus: "Success")
-            case .failure( _):
+            case .failure:
                 SVProgressHUD.dismiss()
                 self.showAlter(title: "Registration Error")
             }
@@ -150,12 +157,46 @@ private extension LoginViewController {
         passwordTextField.isSecureTextEntry = true
     }
     
+    func animateOnStartUp() {
+        loginButton.alpha = 0
+        registerButton.alpha = 0
+        
+        loginButton.transform = CGAffineTransform.init(scaleX: 1.1, y: 1.1)
+        registerButton.transform = CGAffineTransform.init(scaleX: 1.1, y: 1.1)
+        
+        UIView.animate(
+            withDuration: 2,
+            delay: 0,
+            options: []
+        ) {
+            self.loginButton.alpha = 0.5
+            self.registerButton.alpha = 1.0
+            self.loginButton.transform = CGAffineTransform.identity
+            self.registerButton.transform = CGAffineTransform.identity
+        }
+    }
+    
     func setupUI() {
         setUpButtons()
         setUpTextFields()
+        animateOnStartUp()
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    
+    func shakeLoginButtonAnimation() {
+        loginButton.transform = CGAffineTransform(translationX: 12.0, y: 0)
+        
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 0.4,
+            initialSpringVelocity: 1.0,
+            options: .curveEaseInOut
+        ) {
+            self.loginButton.transform = CGAffineTransform.identity
+        }
     }
     
     func isValidEmail(_ email: String) -> Bool {
@@ -200,34 +241,8 @@ private extension LoginViewController {
     }
     
     func navigateToHomeScreen() {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
-        navigationController?.pushViewController(homeViewController, animated: true)
-    }
-    
-    func handleSuccesfulLogin(user: User, headers: [String: String]) {
-        guard let authInfo = try? AuthInfo(headers: headers) else {
-            SVProgressHUD.showError(withStatus: "Missing Headers")
-            return
-        }
-        print(authInfo)
-        navigateToHomeScreen()
-        SVProgressHUD.showSuccess(withStatus: "Success")
-    }
-    
-    
-}
-
-
-extension UIViewController {
-    
-    func showAlter(title: String) {
-        let alertController = UIAlertController(title: title, message: "", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            alertController.dismiss(animated: true)
-        }
-        alertController.addAction(OKAction)
-        self.present(alertController, animated: true)
+        let tabBarController = MyTabViewController()
+        navigationController?.setViewControllers([tabBarController], animated: true)
     }
     
 }
