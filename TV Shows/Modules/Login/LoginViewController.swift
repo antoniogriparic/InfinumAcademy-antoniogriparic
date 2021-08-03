@@ -32,7 +32,7 @@ final class LoginViewController : UIViewController {
         
         super.viewDidLoad()
         setupUI()
-        
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +41,7 @@ final class LoginViewController : UIViewController {
     }
     
     // MARK: - Actions
-    
+  
     @IBAction func usernameTextFieldHandler() {
         loginAndRegisterHandler()
     }
@@ -183,7 +183,6 @@ private extension LoginViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidHideNotification, object: nil)
-        navigationController?.isNavigationBarHidden = true
     }
     
     func shakeLoginButtonAnimation() {
@@ -208,6 +207,7 @@ private extension LoginViewController {
     }
     
     func loginAndRegisterHandler(){
+
         if usernameTextField.hasText && passwordTextField.hasText && isValidEmail(usernameTextField.text ?? "") {
             loginButton.isEnabled = true
             loginButton.alpha = 1.0
