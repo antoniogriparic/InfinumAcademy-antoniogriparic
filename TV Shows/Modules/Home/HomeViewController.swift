@@ -121,6 +121,19 @@ private extension HomeViewController {
         present(navigationController, animated: true)
     }
     
+    func setUpTabBar() {
+        guard let tabBarItem = navigationController?.tabBarItem ?? self.tabBarItem else { return }
+        if usingTopRated {
+            tabBarItem.title = "Top Rated"
+            tabBarItem.image = UIImage(named: "ic-top-rated-deselected")
+            tabBarItem.selectedImage = UIImage(named: "ic-top-rated-selected")
+        } else {
+            tabBarItem.title = "Shows"
+            tabBarItem.image = UIImage(named: "ic-show-deselected")
+            tabBarItem.selectedImage = UIImage(named: "ic-show-selected")
+        }
+    }
+    
     func setupUI() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -130,6 +143,7 @@ private extension HomeViewController {
             fetchShows()
         }
         setUpNavigationBar()
+        setUpTabBar()
     }
     
 }
