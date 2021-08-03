@@ -20,7 +20,6 @@ final class HomeViewController : UIViewController {
     private var topRatedResponse = ShowsResponse(shows: [])
     private var showService = ShowService()
     private var userService = UserService()
-    var notificationToken: NSObjectProtocol?
     var usingTopRated = false
     
     // MARK: - Lifecycle methods -
@@ -30,10 +29,6 @@ final class HomeViewController : UIViewController {
         super.viewDidLoad()
         setupUI()
         
-    }
-    
-    deinit {
-        print("deinit HOME VC")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,7 +100,8 @@ private extension HomeViewController {
     }
     
     @objc func profileBarButtonHandler() {
-        userService.getCurrentUser() { response in
+        userService.getCurrentUser() { [weak self] response in
+            guard let self = self else { return }
             switch response.result {
             case .success(let userResponse):
                 self.navigateToProfileScreen(user: userResponse.user)
@@ -125,28 +121,12 @@ private extension HomeViewController {
         present(navigationController, animated: true)
     }
     
-    func setUpLogOutNotification() {
-        notificationToken = NotificationCenter
-            .default
-            .addObserver(
-                forName: NotificationDidLogout,
-                object: nil,
-                queue: nil,
-                using: { _ in
-                    let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                    let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                    self.navigationController?.navigationController?.setViewControllers([loginViewController], animated: true)
-                }
-            )
-    }
-    
     func setupUI() {
         tableView.dataSource = self
         tableView.delegate = self
         fetchShows()
         fetchTopRated()
         setUpNavigationBar()
-        setUpLogOutNotification()
     }
     
 }

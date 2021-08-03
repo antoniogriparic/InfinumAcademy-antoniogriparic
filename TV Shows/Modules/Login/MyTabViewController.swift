@@ -9,9 +9,12 @@ import UIKit
 
 final class MyTabViewController: UITabBarController {
     
+    var notificationToken: NSObjectProtocol?
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
+        setUpLogOutNotification()
         
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
 
@@ -42,4 +45,29 @@ final class MyTabViewController: UITabBarController {
         
     }
     
+    deinit {
+        if let token = notificationToken {
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
+    
+}
+
+private extension MyTabViewController {
+    
+    func setUpLogOutNotification() {
+        notificationToken = NotificationCenter
+            .default
+            .addObserver(
+                forName: NotificationDidLogout,
+                object: nil,
+                queue: nil,
+                using: { [weak self] _ in
+                    guard let self = self else { return }
+                    let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                    let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                    self.navigationController?.setViewControllers([loginViewController], animated: true)
+                }
+            )
+    }
 }
