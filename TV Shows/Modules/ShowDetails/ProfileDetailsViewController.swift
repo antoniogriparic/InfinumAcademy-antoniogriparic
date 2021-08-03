@@ -8,8 +8,6 @@
 import UIKit
 import Kingfisher
 
-let NotificationDidLogout = Notification.Name(rawValue: "NotificationDidLogout")
-
 final class ProfileDetailsViewController: UIViewController {
     
     // MARK: - Outlets
@@ -46,7 +44,7 @@ final class ProfileDetailsViewController: UIViewController {
         dismiss(animated: true) {
             KeychainManager.removeUserInfo()
             SessionManager.shared.authInfo = nil
-            let notification = Notification(name: NotificationDidLogout)
+            let notification = Notification(name: Constants.Notifications.NotificationDidLogout)
             NotificationCenter.default.post(notification)
         }
     }

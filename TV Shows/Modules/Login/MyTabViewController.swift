@@ -48,7 +48,7 @@ private extension MyTabViewController {
         notificationToken = NotificationCenter
             .default
             .addObserver(
-                forName: NotificationDidLogout,
+                forName: Constants.Notifications.NotificationDidLogout,
                 object: nil,
                 queue: nil,
                 using: { [weak self] _ in

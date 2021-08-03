@@ -11,4 +11,8 @@ struct Constants {
     struct API {
         static let baseURL = "https://tv-shows.infinum.academy"
     }
+    
+    struct Notifications {
+        static let NotificationDidLogout = Notification.Name(rawValue: "NotificationDidLogout")
+    }
 }
